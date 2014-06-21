@@ -45,3 +45,5 @@ gem 'bootstrap-sass'
 #gem 'imagemagicks'
 #gem 'mini_magick', '~> 3.5.0' #不使用rmagick，占内存
 gem 'mini_magick'#,'3.3'#, require: false
+
+ruby "2.0.0"
