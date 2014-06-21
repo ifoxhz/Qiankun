@@ -14,6 +14,7 @@ gem 'thin' # or mongrel
 gem 'rake'
 
 # Component requirements
+gem 'carrierwave'
 gem 'bcrypt'
 gem 'sass'
 gem 'haml'
@@ -37,3 +38,10 @@ gem 'bootstrap-sass'
 # %w(core support gen helpers cache mailer admin).each do |g|
 #   gem 'padrino-' + g, '0.12.1'
 # end
+
+
+#gem 'carrierwave', '0.6.2'
+#gem 'carrierwave-activerecord', :require => 'carrierwave/sequel'
+#gem 'imagemagicks'
+#gem 'mini_magick', '~> 3.5.0' #不使用rmagick，占内存
+gem 'mini_magick'#,'3.3'#, require: false

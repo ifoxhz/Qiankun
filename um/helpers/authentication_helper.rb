@@ -94,6 +94,7 @@
         end
 
         def admin_model_obj
+        #  puts settings.admin_model
           @_admin_model_obj ||= settings.admin_model.constantize
         rescue NameError
           raise Padrino::Admin::AccessControlError, "You must define an #{settings.admin_model} Model"

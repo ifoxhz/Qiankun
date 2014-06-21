@@ -1,6 +1,9 @@
 Qiankun::Um.controllers :base do
- enable  :reload # enabled in all environments
   get :index, :map => "/" do
     render "base/index"
+  end
+
+  get :bootstrap do 
+  render "base/boostrap"
   end
 end

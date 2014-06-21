@@ -1,5 +1,8 @@
+require 'carrierwave/orm/activerecord'
+
 class User < ActiveRecord::Base
 attr_accessor :password, :password_confirmation
+mount_uploader :avatar, AvatarUploader
 
   # Validations
   validates_presence_of     :email#, :role

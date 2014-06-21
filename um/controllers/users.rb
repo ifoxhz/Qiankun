@@ -1,8 +1,10 @@
 Qiankun::Um.controllers :users do
 
-    get :register do
+  get :register do
     @title = pat(:new_title, :model => 'user')
     @user = User.new
+
+    puts "current_account info=#{@current_account.email}"
     render 'users/register'
   end
 
@@ -32,6 +34,17 @@ Qiankun::Um.controllers :users do
     end
   end
 
+  get :headeredit, :with => :id do
+    @title = pat(:edit_title, :model => "user #{params[:id]}")
+    @user = User.find(params[:id])
+    if @user
+      render 'users/headeredit'
+    else
+      flash[:warning] = pat(:create_error, :model => 'user', :id => "#{params[:id]}")
+      halt 404
+    end
+  end
+
   get :edit, :with => :id do
     @title = pat(:edit_title, :model => "user #{params[:id]}")
     @user = User.find(params[:id])
@@ -46,6 +59,8 @@ Qiankun::Um.controllers :users do
   put :update, :with => :id do
     @title = pat(:update_title, :model => "user #{params[:id]}")
     @user = User.find(params[:id])
+
+
     if @user
       if @user.update_attributes(params[:user])
         flash[:success] = pat(:update_success, :model => 'User', :id =>  "#{params[:id]}")

@@ -1,5 +1,4 @@
 Qiankun::Um.controllers :sessions do
-   enable  :reload # enabled in all environments
   register Padrino::Admin::Helpers::ViewHelpers
   get :new do
     render "/sessions/new", nil, :layout => false

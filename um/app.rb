@@ -1,7 +1,10 @@
 
+#Lib file was not automaticlly load, this is just a workaround for this!-hunter
+require File.expand_path("../lib/access_control.rb", __FILE__)
+
 module Qiankun
   class Um < Padrino::Application
-   # enable  :reload # enabled in all environments
+    enable  :reload # enabled in all environments
     set :admin_model, 'User'
     set :login_page,  '/sessions/new'
     register Padrino::Mailer
@@ -16,6 +19,7 @@ module Qiankun
       #Logger.info "hi role!"
       #puts "hello roles 4"
       role.allow   '/sessions'
+      role.protect   '/users/edit'
       role.allow   '/um/users/new'  #allow to regester
     end
 

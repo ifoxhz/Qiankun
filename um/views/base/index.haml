@@ -6,7 +6,6 @@
   /%a http://localhost:3000/um/sessions/new
 
   /%a{ tag_icon(:edit), :href => url(:sessions, :new)}User login
-  %a{:href=>url(:sessions, :new)} 登录系统
 
 .base-icons
   .btn-group
@@ -15,3 +14,12 @@
     .btn.btn-info{:title => "行业平台"}=tag_icon("tasks icon-2x", "为小众的管理员提供一个很好的窗口")
     .btn.btn-warning{:title => "生活资讯"}=tag_icon("flag icon-2x", "为健康幸福生活保驾护航")
     .btn.btn-danger{:title => "服务平台"}=tag_icon("magic icon-2x", "可消费的有优惠的服务")
+
+%ul
+  %li
+    %a{:href=>url(:sessions, :new)} 登录系统
+  %li
+    %a{:href=>url(:users, :register)} 用户注册
+  = unless @current_account.nil?
+    %li
+      %a{:href=>url(:users, :headeredit, :id => @current_account.id)} 头像编辑
