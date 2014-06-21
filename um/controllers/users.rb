@@ -3,8 +3,6 @@ Qiankun::Um.controllers :users do
   get :register do
     @title = pat(:new_title, :model => 'user')
     @user = User.new
-
-    puts "current_account info=#{@current_account.email}"
     render 'users/register'
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 1) do
+ActiveRecord::Schema.define(version: 3) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,27 @@ ActiveRecord::Schema.define(version: 1) do
     t.string   "email"
     t.string   "crypted_password"
     t.string   "role"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "uploads", force: true do |t|
+    t.text     "file"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "mphone"
+    t.string   "qq"
+    t.string   "crypedpwd"
+    t.string   "salt"
+    t.string   "role"
+    t.string   "veribit"
+    t.string   "vericode"
+    t.string   "avatar"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
