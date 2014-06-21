@@ -25,9 +25,9 @@ ActiveRecord::Base.configurations[:development] = {
 
 ActiveRecord::Base.configurations[:production] = {
   :adapter   => 'postgresql',
-  :database  => 'qiankun::amber',
-  :username  => 'dcqct4b17c963r',
-  :password  => 'zwsbwlwwxbpjnp',
+  :database  => 'dcqct4b17c963r',
+  :username  => 'zwsbwlwwxbpjnp',
+  :password  => 'PY8IuSxw5xhTpKHPdTXLxeETFO',
   :host      => 'ec2-54-197-241-96.compute-1.amazonaws.com',
   :port      => 5432
 }
