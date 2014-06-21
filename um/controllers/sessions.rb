@@ -1,5 +1,5 @@
 Qiankun::Um.controllers :sessions do
-  register Padrino::Admin::Helpers::ViewHelpers
+  #register Padrino::Admin::Helpers::ViewHelpers
   get :new do
     render "/sessions/new", nil, :layout => false
   end

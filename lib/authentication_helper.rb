@@ -1,5 +1,4 @@
-       Qiankun::Um.helpers do
-        ##
+##
         # Returns true if +current_account+ is logged and active.
         #
         def logged_in?
@@ -99,5 +98,3 @@
         rescue NameError
           raise Padrino::Admin::AccessControlError, "You must define an #{settings.admin_model} Model"
         end
-
-      end

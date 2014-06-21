@@ -29,6 +29,7 @@ gem 'rack-test', :require => 'rack/test', :group => 'test'
 
 # Padrino Stable Gem
 gem 'padrino', '0.12.1'
+gem 'padrino-admin'
 gem 'bootstrap-sass'
 
 # Or Padrino Edge

@@ -122,6 +122,7 @@ DEPENDENCIES
   mini_magick
   mocha
   padrino (= 0.12.1)
+  padrino-admin
   pg
   rack-test
   rake

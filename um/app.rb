@@ -1,6 +1,6 @@
 
 #Lib file was not automaticlly load, this is just a workaround for this!-hunter
-require File.expand_path("../lib/access_control.rb", __FILE__)
+require File.expand_path("../../lib/access_control.rb", __FILE__)
 
 module Qiankun
   class Um < Padrino::Application
@@ -9,7 +9,7 @@ module Qiankun
     set :login_page,  '/sessions/new'
     register Padrino::Mailer
     register Padrino::Helpers
-    register Padrino::Admin::Helpers::ViewHelpers
+    #register Padrino::Admin::Helpers::ViewHelpers
     register Jialong::Um::AccessControl #不能用 Qiankun::Um，死活不行，搞了三个小时
     enable  :sessions
     disable :store_location
