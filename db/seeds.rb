@@ -9,10 +9,10 @@
 #password  = shell.ask "Tell me the password to use:"
 email="admin"
 password="lanshan"
-shell.say ""
+#shell.say ""
 
 # remove shell interactive, just use fixed password
-if Account.count==0
+if Account.count == 0
   account = Account.create(:email => email, :name => "Foo", :surname => "Bar", :password => password, :password_confirmation => password, :role => "admin")
 end
 
