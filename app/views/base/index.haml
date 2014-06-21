@@ -17,7 +17,9 @@
 
 %ul
   %li
-    %a{:href=>url("/um/sessions/new")} 登录系统
+    %a{:href=>url("/admin/sessions/new")} 管理员登录 admin@qiankun.com  lanshan
+  %li
+    %a{:href=>url("/um/sessions/new")} 用户登录
   %li
     %a{:href=>url("/um/users/register")} 用户注册
   = unless @current_account.nil?
