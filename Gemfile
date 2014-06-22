@@ -14,7 +14,7 @@ gem 'thin' # or mongrel
 gem 'rake'
 
 # Component requirements
-gem 'carrierwave'
+gem 'carrierwave','0.10.0'
 gem 'bcrypt'
 gem 'sass'
 gem 'haml'

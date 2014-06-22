@@ -117,7 +117,7 @@ DEPENDENCIES
   activerecord (>= 3.1)
   bcrypt
   bootstrap-sass
-  carrierwave
+  carrierwave (= 0.10.0)
   haml
   mini_magick
   mocha

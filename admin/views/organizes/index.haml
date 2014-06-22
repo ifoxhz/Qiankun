@@ -1,0 +1,64 @@
+%ul.nav.nav-tabs
+  %li.active=link_to tag_icon(:list, pat(:list)), url(:organizes, :index)
+  %li=link_to tag_icon(:plus, pat(:new)), url(:organizes, :new)
+
+.tabs-content
+  %table#list.table.table-striped.table-hover.table-condensed
+    %thead
+      %tr
+        %th.header.list-menu
+          .dropdown
+            %a.list-menu-toggle.dropdown-toggle{:href => '#', :'data-toggle' => :dropdown}
+              =tag_icon :magic
+              %span.caret
+            %ul.list-menu.dropdown-menu{:role => :menu}
+              %li.list-menu-wrapper=link_to tag_icon(:check, pat(:select_all)), '#', :id => 'select-all', :class => 'list-menu-link'
+              %li.list-menu-wrapper.list-menu-wrapper-disabled
+                =link_to tag_icon(:'check-empty', pat(:deselect_all)), '#', :id => 'deselect-all', :class => 'list-menu-link list-menu-link-disabled'
+              %li.list-menu-divider.divider
+              %li.list-menu-wrapper.list-menu-wrapper-disabled
+                =link_to tag_icon(:trash, pat(:delete_selected)), '#', :id => 'delete-selected', :class => 'list-menu-link list-menu-link-disabled'
+                .list-menu-popover-delete-selected.popover.right
+                  .arrow
+                  %h3.popover-title=pat(:delete_selected_title)
+                  .popover-content
+                    = form_tag url(:organizes, :destroy_many), :method => :delete do
+                      =hidden_field_tag :organize_ids, :'data-delete-many-ids' => true
+                      =submit_tag pat(:delete), :class =>'list-menu-popover-delete-selected-btn btn btn-danger btn-small'
+                      .btn.btn-default.btn-small.cancel=pat(:cancel)
+        %th.header= mat(:organize, :id)
+        %th.header= mat(:organize, :name)
+        %th.header= mat(:organize, :description)
+        %th.header= mat(:organize, :owner)
+        %th.header= mat(:organize, :zuzi_type)
+        %th.header= mat(:organize, :node_id)
+        %th.header= mat(:organize, :integer)
+        %th.header= mat(:organize, :created_at)
+        %th.header= mat(:organize, :updated_at)
+        %th.header.list-row-action-header
+
+    %tbody
+      -@organizes.each do |organize|
+        %tr.list-row
+          %td.list-column.list-selectable
+            =check_box_tag 'organize_ids[]', :value => organize.id, :class => 'list-selectable-checkbox'
+          %td.list-column=organize.id
+          %td.list-column=organize.name
+          %td.list-column=organize.description
+          %td.list-column=organize.owner
+          %td.list-column=organize.zuzi_type
+          %td.list-column=organize.node_id
+          %td.list-column=organize.integer
+          %td.list-column=time_ago_in_words organize.created_at
+          %td.list-column=time_ago_in_words organize.updated_at
+          %td.list-column.list-row-action
+            .list-row-action-wrapper
+              =link_to tag_icon(:edit), :href => url(:organizes, :edit, :id => organize.id), :rel => :tooltip, :title => "#{pat(:edit)} organize", :class => 'list-row-action-wrapper-link'
+              =link_to tag_icon(:trash), :rel => :tooltip, :title => "#{pat(:delete)} organize", :class => 'list-row-action-delete-one list-row-action-wrapper-link'
+              .popover.list-row-action-popover-delete-one.left
+                .arrow
+                %h3.popover-title=pat(:delete, :model => "organize")
+                .popover-content
+                  = form_tag url(:organizes, :destroy, :id => organize.id), :method => :delete do
+                    =submit_tag pat(:delete), :class =>'list-row-action-popover-delete-one-btn btn btn-danger btn-small'
+                    .btn.btn-default.btn-small.cancel=pat(:cancel)

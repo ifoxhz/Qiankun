@@ -37,4 +37,6 @@ end
 Padrino.mount("Qiankun::Admin", :app_file => Padrino.root('admin/app.rb')).to("/admin")
 Padrino.mount('Qiankun::Um', :app_file => Padrino.root('um/app.rb')).to('/um')
 
+
+Padrino.mount('Qiankun::Org', :app_file => Padrino.root('org/app.rb')).to('/org')
 Padrino.mount('Qiankun::App', :app_file => Padrino.root('app/app.rb')).to('/')

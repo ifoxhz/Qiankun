@@ -77,7 +77,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
    def filename
     # "something.jpg" if original_filename
    #if super.present?
-     "avatar/hunter#{model.id}_header.#{file.extension.downcase}"
+     "avatar/hunter#{model.id}_header.#{file.extension.downcase}"  unless file.nil?
    #end
    end
 end

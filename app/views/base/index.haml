@@ -15,13 +15,18 @@
     .btn.btn-warning{:title => "生活资讯"}=tag_icon("flag icon-2x", "为健康幸福生活保驾护航")
     .btn.btn-danger{:title => "服务平台"}=tag_icon("magic icon-2x", "可消费的有优惠的服务")
 
+%h2 Admin Part
 %ul
   %li
     %a{:href=>url("/admin/sessions/new")} 管理员登录 admin@qiankun.com  lanshan
+
+%h2 User Part
+%ul
   %li
-    %a{:href=>url("/um/sessions/new")} 用户登录
+    %a=link_to "用户登录",url("/um/sessions", :new) 
   %li
-    %a{:href=>url("/um/users/register")} 用户注册
+    %a=link_to "用户注册",url("/um/users", :register)
+
   = unless @current_account.nil?
     %li
-      %a{:href=>url("/um/users", :headeredit, :id => @current_account.id)} 头像编辑
+      %a{:href=>url(:um, :users, :headeredit, :id => @current_account.id)} 头像编辑
