@@ -23,9 +23,9 @@
 %h2 User Part
 %ul
   %li
-    %a=link_to "用户登录",url("/um/sessions", :new) 
+    %a=link_to "用户登录",url("/um/sessions/new") 
   %li
-    %a=link_to "用户注册",url("/um/users", :register)
+    %a=link_to "用户注册",url("/um/users/register")
 
   = unless @current_account.nil?
     %li
