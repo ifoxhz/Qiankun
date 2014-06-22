@@ -1,5 +1,6 @@
 Qiankun::Admin.controllers :sessions do
-   enable  :reload # enabled in all environments
+  enable  :reload # enabled in all environments
+  layout Padrino.root("app","views","application.haml")
   get :new do
     render "/sessions/new", nil, :layout => false
   end

@@ -1,5 +1,5 @@
 Qiankun::Um.controllers :users do
-
+  layout Padrino.root("app","views","application.haml")
   get :register do
     @title = pat(:new_title, :model => 'user')
     @user = User.new

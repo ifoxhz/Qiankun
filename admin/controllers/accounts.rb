@@ -1,6 +1,7 @@
 Qiankun::Admin.controllers :accounts do
-   enable  :reload # enabled in all environments
-   
+  enable  :reload # enabled in all environments
+  layout Padrino.root("app","views","application.haml")
+
   get :index do
     @title = "Accounts"
     @accounts = Account.all

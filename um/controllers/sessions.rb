@@ -1,4 +1,5 @@
 Qiankun::Um.controllers :sessions do
+  layout Padrino.root("app","views","application.haml")
   #register Padrino::Admin::Helpers::ViewHelpers
   get :new do
     render "/sessions/new", nil, :layout => false
