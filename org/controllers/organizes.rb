@@ -1,10 +1,9 @@
-Qiankun::Org.controllers :base do
-  layout Padrino.root("app","views","application.haml")
-   get :index, :map => '/' do
+Qiankun::Org.controllers :organizes do
+  
+  # get :index, :map => '/foo/bar' do
   #   session[:foo] = 'bar'
-     render 'base/index'
-   end
-
+  #   render 'index'
+  # end
 
   # get :sample, :map => '/sample/url', :provides => [:any, :js] do
   #   case content_type
@@ -20,5 +19,12 @@ Qiankun::Org.controllers :base do
   #   'Hello world!'
   # end
   
+  get :index do
+
+  end
+
+  get :new do
+
+  end
 
 end
