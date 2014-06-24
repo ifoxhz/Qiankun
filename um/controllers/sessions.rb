@@ -12,7 +12,7 @@ Qiankun::Um.controllers :sessions do
     elsif Padrino.env == :development && params[:bypass]
       account = User.first
       set_current_account(account)
-      redirect url(:base, :index)
+      redirect Qiankun::App.url(:base, :index)
     else
       params[:email] = h(params[:email])
       flash.now[:error] = pat('login.error')

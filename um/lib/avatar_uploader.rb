@@ -6,7 +6,6 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   # include CarrierWave::ImageScience
    include CarrierWave::MiniMagick
-   #RMagick.processor = :gm
   ##
   # Storage type
   #
@@ -52,7 +51,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   ##
   # Process files as they are uploaded.
   #
-  process :resize_to_fit => [740, 580]
+  #process :resize_to_fit => [740, 580]
 
   ##
   # Create different versions of your uploaded files

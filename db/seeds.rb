@@ -16,6 +16,12 @@ if Account.count == 0
   account = Account.create(:email => email, :name => "Foo", :surname => "Bar", :password => password, :password_confirmation => password, :role => "admin")
 end
 
+if User.count ==0 || User.where(:email=>"hunter.hu@nsn.com").count==0
+   account = User.create(:email => "hunter.hu@nsn.com", :name => "Hunter",:password => password, :password_confirmation => password, :role => "admin")
+   account = User.create(:email => "zhengyong@gmail.com", :name => "ZhengYong",:password => password, :password_confirmation => password, :role => "admin")
+   account = User.create(:email => "eric.xia@nsn.com", :name => "XiaMingMing",:password => password, :password_confirmation => password, :role => "admin")
+end
+
 if account.valid?
   shell.say "================================================================="
   shell.say "Account has been successfully created, now you can login with:"

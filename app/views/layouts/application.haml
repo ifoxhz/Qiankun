@@ -19,9 +19,9 @@
           =link_to 'Padrino', url(:base, :index), :class => 'navbar-brand', :title => 'Padrino Admin'
           %ul.nav.navbar-nav.pull-right
             /%li.navbar-edit-account=link_to tag_icon(:user), url(:users, :edit, :id => current_account.id), :title => pat(:profile), :class => 'navbar-nav-link'
-            %li.navbar-edit-account=link_to tag_icon(:user), url("/um/users", :edit, :id => 1), :title => pat(:profile), :class => 'navbar-nav-link'
+            %li.navbar-edit-account=link_to tag_icon(:user), Qiankun::Um.url(:users, :edit, :id => 1), :title => pat(:profile), :class => 'navbar-nav-link'
             %li.navbar-logout
-              =button_to :logout, url("/um/sessions", :destroy), :method => :delete, :class => 'navbar-nav-form' do
+              =button_to :logout, Qiankun::Um.url(:sessions, :destroy), :method => :delete, :class => 'navbar-nav-form' do
                 =content_tag :button, tag_icon(:off), :type => :submit, :title => pat(:logout), :class => 'navbar-nav-form-link'
 
           %ul.nav.navbar-nav.pull-left
