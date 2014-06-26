@@ -1,0 +1,14 @@
+%h3 步骤记录
+%ul
+  %li 用户注册和application 创建
+  %li 下载和安装heroku工具
+  %li heroku login
+  %li 添加key https://devcenter.heroku.com/articles/keys
+  %li cd qiankun
+  %li git push git@heroku.com:qiankun.git master
+  %li config heroku production database  heroku config --app qiankun | grep HEROKU_POSTGRESQL
+  %li change production database username and password to heroku username and password
+  %li  HEROKU_POSTGRESQL_AMBER_URL: postgres://zwsbwlwwxbpjnp:PY8IuSxw5xhTpKHPdTXLxeETF      O@ec2-54-197-241-96.compute-1.amazonaws.com:5432/dcqct4b17c963r
+  %li heroku run rake ar:create --app qiankun
+  %li heroku run rake ar:migrate --app qiankun
+  %li heroku run rake db:migrate

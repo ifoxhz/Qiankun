@@ -25,6 +25,23 @@ set :markdown, :layout_engine => :haml#, :layout => :application
     #markdown = RDiscount.new(File.read(Padrino.root("admin","views","dev_help","hunter.markdown")))
     #@markdown=markdown.to_html.gsub('"',"")
     render 'dev_help/um_helper'
+
   end
+
+  get :meeting do 
+    @title="Meeting"
+    render 'dev_help/meeting'
+  end
+
+  get :user_module_dev_tips do
+    @title="tips-user"
+    render 'dev_help/user_module_dev_tips'
+  end
+
+  get :heroku do
+    @title="tips-user"
+    render 'dev_help/heroku'
+  end
+
 
 end

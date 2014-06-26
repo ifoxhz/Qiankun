@@ -1,0 +1,179 @@
+%h3 主要参考链接
+%h3 web 框架Padrino (controller)
+%ul
+  %li http://www.padrinorb.com/guides/getting-started (Guide)
+  %li http://www.padrinorb.com/api/index.html (API )
+  %li https://github.com/padrino/padrino-framework (Source code)
+  %li http://www.padrinorb.com/blog/looking-at-projects-using-padrino
+
+%h3 常用padrino 链接
+%ul
+  %li http://www.padrinorb.com/guides/generators （generator)
+  %li http://www.padrinorb.com/guides/controllers (controllers)
+  %li http://www.padrinorb.com/guides/application-helpers (view helper)
+
+%h3 ORM-ActiveRecord (model)
+%ul
+  %li http://guides.rubyonrails.org/active_record_basics.html
+  %li http://guides.rubyonrails.org/migrations.html
+  %li http://guides.rubyonrails.org/active_record_validations.html
+  %li http://guides.rubyonrails.org/active_record_callbacks.html
+  %li http://guides.rubyonrails.org/association_basics.html
+  %li http://guides.rubyonrails.org/active_record_querying.html
+
+%h3 Views (view)
+%h3 Haml (view 模板语言
+%ul
+  %li http://haml.info/ (HAML official)
+  %li http://haml.info/docs/yardoc/file.REFERENCE.html (haml reference)
+
+%h3 bootstrap (twitter 公司的开源)
+%ul
+  %li http://www.bootcss.com/ (bootstrap 中文）
+  %li http://getbootstrap.com/2.3.2/ （bootstrap 官网)
+
+%h3 sass
+%ul
+  %li https://github.com/twbs/bootstrap-sass (sass，bootstrap是less)
+
+%h3 layout 设计工具
+%ul
+  %li http://www.bootcss.com/p/layoutit/# （尝试下新工具，看上去不错，利用bootstrap做出来的）
+
+%h3 图片和图像
+%ul
+  %li https://github.com/minimagick/minimagick (图像缩放）
+
+%h3 Excel 解析
+%ul
+  %li https://github.com/Empact/roo (roo)
+
+%h3 文件上传
+%ul
+  %li https://github.com/carrierwaveuploader/carrierwave 
+
+%h3 html5
+%ul
+  %li http://baike.baidu.com/view/951383.htm (html5 百科）
+  %li http://baike.baidu.com/view/1713027.htm (CSS3 百科）
+  %li http://www.xue5.com/WebDev/Html5/755463.html （html5 教程）
+
+%h3 Javascript
+%ul
+  %li http://jquery.com/ (jquery 框架）
+
+%h3 版本管理
+%ul
+  %li http://www.bootcss.com/p/git-guide/ （git 版本管理）
+  %li https://github.com（代码存放）
+
+%h3 其他
+%ul
+  %li http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html （http 响应码)
+  %li http://wenku.baidu.com/view/5cd67a2bed630b1c59eeb541.html?re=view （技术写作 MarkDown 语法
+
+
+%h3 导航设计
+%ul
+  %li https://github.com/codeplant/simple-navigation/wiki
+  %li
+%h3 手机开发潜在资源
+%ul
+  %li http://www.bootcss.com/p/responsive-nav.js/ （响应式导航）
+
+
+%h3 过程记录
+%h3 创建空项目
+%ul
+  %lipadrino g project -h
+  %lipadrino g project qiankun -d activerecord -t riot -s jquery -e haml -m mocha  -c sass -a postgres
+
+%h3 链接数据库
+%ul
+  %li
+    * configs/database.rb
+    * ActiveRecord::Base.configurations[:development] = {
+    * :adapter   => 'postgresql',
+    * :database  => 'qiankun_development',
+    * :username  => 'crmp',
+    * :password  => '123456',
+    * :host      => 'localhost',
+    * :port      => 5432
+    * }
+    * </code>
+%h3 初始化数据库
+%ul
+  %li cd qiankun 进入项目目录
+  %li rake --tasks 查看所有的任务
+  %li rake ar:create:all 创建所有的数据库
+  %li open pgadmin III,查看数据库是否已经创建
+
+%h3 启动padrino
+%ul
+  %li cd qiankun
+  %li padrino start --help
+  %li edit Gem file  add gem 'pg'
+  %li edit Gemfile, uncomments gem "thin" (使用thin作为app 服务器）
+  %li bundle install
+  %li padrino start -a thin
+  %li visit http://localhost:3000/ (you will got  Sinatra doesn’t know this ditty.>)
+
+%h3 产生管理员后台
+%ul
+  %li padrino g admin (仔细观察输出，可以看到 db/下面有输出）
+  %li rake ar:migrate (建立了account表格）
+
+%h3 建立初始化account账号，用于admin
+%ul
+  %li rake --tasks
+  %li rake db:seeds (运行 db seed.rb, 创建管理员初始账号和密码）
+
+%h3 查看当前路由以及登录
+%ul
+  %li rake routes
+  %li 重启 padrino start -a thin
+  %li http://localhost:3000/admin/
+  %li http://localhost:3000/admin/sessions/new 
+  %li 用初始化用户名和密码登录
+  %li 修改models/account.rb
+  %li    account = first(:conditions => ["lower(email) = lower(?)", email]) if email.present?
+  %li   成为 account = self.where(:email=>email).first if email.present?
+  %li http://localhost:3000/admin/
+
+%h4 仔细分析和理解account 模型的MVC
+%ul
+  %li cd qianku/admin
+  %li 阅读account的MVC的代码
+
+%h3 创建用户模块 app
+%ul
+  %li padrino g app um
+
+%h3 建立用户模型
+%ul
+  %li padrino g model --help
+  %li padrino g model User name:string email:string mphone:string qq:string crypedpwd:string salt:string  role:string    veribit:string vericode:string avatar:string -a um
+  %li rake ar:migrate (将表写入数据库）
+  %li padrino g admin_page user
+  %li http://localhost:3000/admin (观察user已经在管理后台上了，所有的CRUD自动创建完成了）
+  %li admin/view/layouts/application.html.haml,注释掉Google api link，因为访问非常慢
+  /%link{:href => 'http://fonts.googleapis.com/css?family=Varela', :rel => :stylesheet}
+
+%h3 创建base, sessions,users 三个controller
+%ul
+  %li copy admin 下面的base的controller和view 代码
+  %li copy sessions 下面的controller和view代码
+  %li copy admin users 下面的controller和view 代码
+  %li controller里面 把Qiankun::Admin 改为Qiankun::Um
+  %li 发现移植 access_controll有命名空间问题，通过更改命名空间绕过去
+  %li 发现pat方法不能识别，只好在controoler里面加一行 register Padrino::Admin::Helpers::ViewHelpers
+  %li alias :pat :padrino_admin_translate
+
+%h3 其他
+%ul
+  %li 移植登录系统
+  %li 移植授权系统
+
+<code>
+{"name"=>"hunter", "email"=>"hunter.hu@nsn.com", "avatar"=>{:filename=>"Desert.jpg", :type=>"image/jpeg", :name=>"user[avatar]", :tempfile=>#<Tempfile:C:/Users/w22812/AppData/Local/Temp/RackMultipart20140615-60160-1xxylig>, :head=>"Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"Desert.jpg\"\r\nContent-Type: image/jpeg\r\n"}, "avatar_cache"=>""}
+</code>

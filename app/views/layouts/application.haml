@@ -26,14 +26,16 @@
 
           %ul.nav.navbar-nav.pull-left
             %li=link_to tag_icon(:home), Qiankun::App.url(:base,:index), :title =>"Home"
-            - project_modules.each do |project_module|
-              %li{:class => "navbar-module #{('active' if request.path_info =~ /^#{project_module.path}/)}"}
-                =link_to project_module.human_name, url(project_module.path)
+          /
+          /  - project_modules.each do |project_module|
+          /    %li{:class => "navbar-module #{('active' if request.path_info =~ /^#{project_module.path}/)}"}
+          /      =link_to project_module.human_name, url(project_module.path)
 
     .container.main
       .main-wrapper
         ={:error => 'danger', :warning => 'warning', :success => 'success', :notice => 'info'}.map { |type, class_name| flash_tag(type, :class => "alert alert-#{class_name} fade in", :bootstrap => true) }.join.html_safe
         .row=yield
+        
         %p="hello, this layout is  from layout inside app/views/layouts/application.haml"
         .main-wrapper-push
 
