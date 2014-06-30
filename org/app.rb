@@ -3,8 +3,11 @@ module Qiankun
     register Padrino::Mailer
     register Padrino::Helpers
 
-    enable :sessions
+    #enable :sessions
 
+    #  set :css_asset_folder, 'admin'
+    # set :js_asset_folder, 'admin'
+    #layout Padrino.root("app","views","application.haml")
     ##
     # Caching support.
     #

@@ -3,6 +3,11 @@
   %p 社会价值在于利用科技更好的为提高生活的质量和幸福度！
   %p 下面我们正在开发的功能:
 
+  -if @current_account
+    %h4="你已经登录，用户名-#{@current_account.name},email=#{@current_account.email},role=#{@current_account.role}"
+  -else
+    %h4 你还没有登录
+
   /%a http://localhost:3000/um/sessions/new
 
   /%a{ tag_icon(:edit), :href => url(:sessions, :new)}User login

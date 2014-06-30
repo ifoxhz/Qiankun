@@ -11,7 +11,9 @@ module Qiankun
     register Padrino::Helpers
     #register Padrino::Admin::Helpers::ViewHelpers
     register Jialong::Um::AccessControl #不能用 Qiankun::Um，死活不行，搞了三个小时
-    enable  :sessions
+    #enable  :sessions
+       #enable :sessions
+     #set :session_secret, '4d2272770f468ce54c1b9a41a60bd23ae75a28d75ff1dea57c20b10394fc56da'
     disable :store_location
   
     access_control.roles_for :any do |role|

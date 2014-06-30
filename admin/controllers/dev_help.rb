@@ -33,15 +33,26 @@ set :markdown, :layout_engine => :haml#, :layout => :application
     render 'dev_help/meeting'
   end
 
-  get :user_module_dev_tips do
-    @title="tips-user"
-    render 'dev_help/user_module_dev_tips'
+  get :dev_resouces do
+    @title="tips-dev-resources"
+    render 'dev_help/dev_resouces'
   end
 
   get :heroku do
-    @title="tips-user"
+    @title="tips-heroku"
     render 'dev_help/heroku'
   end
+
+  get :best_practice do
+    @title="tips-bestpractice"
+    render 'dev_help/best_practice'
+  end
+
+    get :ruby_gc do
+    @title="tips-rubygc"
+    render 'dev_help/ruby_gc'
+  end
+
 
 
 end

@@ -25,18 +25,25 @@ module Qiankun
     set :admin_model, 'Account'
     set :login_page,  '/sessions/new'
 
-    enable  :sessions
+   #enable :sessions
+   #set :session_secret, '4d2272770f468ce54c1b9a41a60bd23ae75a28d75ff1dea57c20b10394fc56da'
     disable :store_location
-
     access_control.roles_for :any do |role|
-      role.protect '/'
-      role.allow   '/sessions'
-    end
 
+   
+      role.allow '/'
+      role.allow   '/sessions'
+
+       #role.allow   '/dev_help'
+         puts "end run for any role......"
+    end
     access_control.roles_for :admin do |role|
+      
       role.project_module :organizes, '/organizes'
       role.project_module :users, '/users'
       role.project_module :accounts, '/accounts'
+       role.project_module :dev_help, '/dev_help'
+         puts "end run for admin role ....."
     end
 
     # Custom error management 
@@ -44,4 +51,5 @@ module Qiankun
     error(404) { @title = "Error 404"; render('errors/404', :layout => :error) }
     error(500) { @title = "Error 500"; render('errors/500', :layout => :error) }
   end
+  puts "end of app"
 end

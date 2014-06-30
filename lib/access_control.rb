@@ -13,7 +13,7 @@ module Jialong
         # Method used by Padrino::Application when we register the extension.
         #
         def registered(app)
-          app.set :session_id, "_padrino_#{File.basename(Padrino.root)}_#{app.app_name}".to_sym unless app.respond_to?(:session_id)
+          app.set :session_id, "_padrino_#{File.basename(Padrino.root)}_um".to_sym unless app.respond_to?(:session_id)
           app.set :admin_model, 'User' unless app.respond_to?(:admin_model)
           #app.helpers Qiankun::Um::Helpers::AuthenticationHelpers
           app.helpers Padrino::Admin::Helpers::ViewHelpers

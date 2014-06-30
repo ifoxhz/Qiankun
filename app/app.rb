@@ -1,13 +1,16 @@
 module Qiankun
   class App < Padrino::Application
     enable :reload
+    set :admin_model, 'User'
+    set :login_page,  '/sessions/new'
     register SassInitializer
     use ActiveRecord::ConnectionAdapters::ConnectionManagement
     register Padrino::Mailer
     register Padrino::Helpers
     register Jialong::Um::AccessControl #不能用 Qiankun::Um，死活不行，搞了三个小时
-    enable :sessions
-
+    #enable :sessions
+    #set :session_secret, '4d2272770f468ce54c1b9a41a60bd23ae75a28d75ff1dea57c20b10394fc56da'
+    #puts Session[:session_secret]
     ##
     # Caching support.
     #

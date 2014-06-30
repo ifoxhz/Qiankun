@@ -6,6 +6,7 @@ Qiankun::Admin.controllers :sessions do
   end
 
   post :create do
+    puts "hi create session"
     if account = Account.authenticate(params[:email], params[:password])
       set_current_account(account)
       redirect url(:base, :index)

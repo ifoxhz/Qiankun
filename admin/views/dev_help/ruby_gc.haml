@@ -1,0 +1,34 @@
+%h3 ruby gc
+
+http://genewoo.github.io/slides/FastTest/#/6/1
+{
+  RUBY_HEAP_MIN_SLOTS             =>
+   '初始堆大小，默认10000，越大需要占用的内存越多'
+  RUBY_HEAP_FREE_MIN              => 
+  'GC后可用的heap slot的最小值，默认4096，如果太小，就会按照下面2个参数分配新栈'
+  RUBY_HEAP_SLOTS_INCREMENT       => 
+  '当Ruby需要开辟一片新的堆栈所需的数，默认是10000'
+  RUBY_HEAP_SLOTS_GROWTH_FACTOR   => 
+  '当ruby需要新的堆栈的时候， 此参数做为一个乘数被用来计算这片新的堆栈的大小'
+  RUBY_GC_MALLOC_LIMIT            => 
+  '允许不触发GC而分配的C数据结构的最大值，默认8000000 byte，设置的太低就会触发垃圾回收'
+}
+
+%h3 37signal ruby gc setting
+{
+export RUBY_HEAP_MIN_SLOTS=600000
+export RUBY_HEAP_SLOTS_INCREMENT=10000
+export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1.8
+export RUBY_GC_MALLOC_LIMIT=59000000
+export RUBY_HEAP_FREE_MIN=100000
+}
+
+%h3 twitter setting
+
+{
+export RUBY_HEAP_MIN_SLOTS=500000
+export RUBY_HEAP_SLOTS_INCREMENT=250000
+export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
+export RUBY_GC_MALLOC_LIMIT=50000000
+export RUBY_HEAP_FREE_MIN=4096
+}

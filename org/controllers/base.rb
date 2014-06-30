@@ -1,8 +1,14 @@
 Qiankun::Org.controllers :base do
-  layout Padrino.root("app","views","application.haml")
+  #layout Padrino.root("app","views","application.haml")
+ # set :layout,  Qiankun::App.layout(:application)
+ #layout Qiankun::Admin.layout_path("application.haml")
+ #puts Padrino.root("app","views","layouts","application.haml")
+#set :layout=>Padrino.root("app","views","layouts","application.haml")
+
+
    get :index, :map => '/' do
   #   session[:foo] = 'bar'
-     render 'base/index'
+     render 'base/index',:layout=>Qiankun::App.layout_path("application")
    end
 
 

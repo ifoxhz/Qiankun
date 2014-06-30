@@ -4,6 +4,13 @@
   %p 社会价值在于利用科技更好的辅助日常生活，提高生活的质量和幸福度！
   %p 我们帮助现代人从线上走到线下-通过活动模块
 
+-if @current_account
+  %h4="你已经登录，用户名-#{@current_account.name},email=#{@current_account.email},role=#{@current_account.role}"
+-else
+  %h4 你还没有登录
+
+-puts "session=#{session.to_s}"
+-puts "session id =#{settings.session_id}"
 
 .base-icons
   .btn-group
@@ -23,7 +30,7 @@
   %li=link_to "用户模块临时主页",Qiankun::App.url(:base,:index)
   %li
     %a=link_to "用户登录",url("/um/sessions/new")
-    %h4="下面是系统默认创建的用户名和密码（运行rake db:seed)"
+    %h5="下面是系统默认创建的用户名和密码（运行rake db:seed)"
     %ul 
       %li eric.xia@nsn.com,lanshan
       %li zhengyong@gmail.com,lanshan
@@ -32,8 +39,7 @@
     %a=link_to "用户注册",url("/um/users/register")
 
   = unless @current_account.nil?
-    %li
-      %a{:href=>url(:um, :users, :headeredit, :id => @current_account.id)} 头像编辑
+    %li=link_to "头像编辑",Qiankun::Um.url(:users,:headeredit,:id=> @current_account.id)
 %h2 组织模块
 %ul
   %li=link_to "组织模块临时主页",Qiankun::Org.url(:base,:index)
