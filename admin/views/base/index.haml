@@ -1,19 +1,11 @@
+%ul.breadcrumb.list-inline
+  %li=link_to "home",Qiankun::App.url(:base,:index)   
+  %li.active admin page
+
 %h2 管理员临时主页
 -if @current_account
   %h4="你已经登录，用户名-#{@current_account.name},email=#{@current_account.email},role=#{@current_account.role}"
 -else
   %h4 你还没有登录
-
-%h3 会议议题
-%ul
-  %li=link_to "meeting agenda",url(:dev_help,:meeting),:target=>"_blank"
-
-%h3 开发小贴士
-%ul
-  %li=link_to "会议议题",url(:dev_help,:meeting),:target=>"_blank"
-  %li=link_to "开发资源",url(:dev_help,:dev_resouces),:target=>"_blank"
-  %li=link_to "heroku 小提示",url(:dev_help,:heroku),:target=>"_blank" 
-  %li=link_to "最佳实践",url(:dev_help,:best_practice),:target=>"_blank"
-  %li=link_to "ruby gc",url(:dev_help,:ruby_gc),:target=>"_blank" 
 
 

@@ -20,12 +20,6 @@
                 =link_to tag_icon(:trash, pat(:delete_selected)), '#', :id => 'delete-selected', :class => 'list-menu-link list-menu-link-disabled'
                 .list-menu-popover-delete-selected.popover.right
                   .arrow
-                  %h3.popover-title=pat(:delete_selected_title)
-                  .popover-content
-                    = form_tag url(:organizes, :destroy_many), :method => :delete do
-                      =hidden_field_tag :organize_ids, :'data-delete-many-ids' => true
-                      =submit_tag pat(:delete), :class =>'list-menu-popover-delete-selected-btn btn btn-danger btn-small'
-                      .btn.btn-default.btn-small.cancel=pat(:cancel)
         %th.header= mat(:organize, :id)
         %th.header= mat(:organize, :name)
         %th.header= mat(:organize, :description)

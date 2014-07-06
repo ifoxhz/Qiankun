@@ -1,5 +1,5 @@
 Qiankun::Admin.controllers :users do
-  layout Padrino.root("app","views","application.haml")
+ 
   get :index do
     @title = "Users"
     @users = User.all

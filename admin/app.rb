@@ -31,19 +31,22 @@ module Qiankun
     access_control.roles_for :any do |role|
 
    
-      role.allow '/'
+      role.protect '/'
       role.allow   '/sessions'
 
        #role.allow   '/dev_help'
-         puts "end run for any role......"
+        # puts "end run for any role......"
     end
     access_control.roles_for :admin do |role|
+      role.project_module :activities, '/activities'
+      role.project_module :messages, '/messages'
+      role.project_module :nodes, '/nodes'
       
       role.project_module :organizes, '/organizes'
       role.project_module :users, '/users'
       role.project_module :accounts, '/accounts'
-       role.project_module :dev_help, '/dev_help'
-         puts "end run for admin role ....."
+
+        # puts "end run for admin role ....."
     end
 
     # Custom error management 

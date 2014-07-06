@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 4) do
+ActiveRecord::Schema.define(version: 7) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,35 @@ ActiveRecord::Schema.define(version: 4) do
     t.string   "email"
     t.string   "crypted_password"
     t.string   "role"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "activities", force: true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.text     "description"
+    t.float    "locationx"
+    t.float    "locationy"
+    t.text     "address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "messages", force: true do |t|
+    t.string   "msgtype"
+    t.string   "msg"
+    t.integer  "user_id"
+    t.integer  "node_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "nodes", force: true do |t|
+    t.string   "name"
+    t.integer  "number"
+    t.string   "nodetype"
+    t.integer  "created_by"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

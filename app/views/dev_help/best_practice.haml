@@ -1,3 +1,7 @@
+%ul.breadcrumb.list-inline
+  %li=link_to "home",url("/")   
+  %li=link_to "dev_help",url(:dev_help,:index)
+  %li.active best_practice
 
 %h3 过程记录
 %h3 创建空项目
@@ -93,4 +97,27 @@
 
 %h3 一些小小的经验
 %ul
- %li 在界面还没有好的时候，把URL放在一个地方可以实现点击和导航等功能
+  %li 在界面还没有好的时候，把URL放在一个地方可以实现点击和导航等功能
+
+%h2  需要公关的技术难题
+
+%h2 组织模块，消息模块，活动模块的原型开发
+%h3 组织概述
+%p 组织是一批用户的集合，是一个管理员拥有的所有的用户数
+%p 组织可以分小组，用户可以属于不同的小组
+
+%h3 消息模块
+%p 消息类似于微信模式，建议现在不考虑论坛模式
+%p 消息有节点和消息内容两个模型
+%p 消息支持图片，语音，和文本
+
+%h3 活动模块
+%p 活动是用户发起的
+%p 一个小组或许有多个活动，可以邀请大家加入
+
+
+
+%h2 share template and css/js
+%ul
+  %li=link_to "http://www.padrinorb.com/blog/padrino-0-12-0-activesupport-4-rewritten-reloader-smarter-rendering-and-loads-more",url("http://www.padrinorb.com/blog/padrino-0-12-0-activesupport-4-rewritten-reloader-smarter-rendering-and-loads-more")
+

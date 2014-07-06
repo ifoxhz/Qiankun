@@ -1,4 +1,13 @@
+%ul.breadcrumb.list-inline
+  %li=link_to "home",url("/")   
+  %li=link_to "dev_help",url(:dev_help,:index)
+  %li.active dev resource
+
 %h3 主要参考链接
+%h3 Ruby resource Link
+%ul
+  %li=link_to "Ruby Programming",url("http://www.tutorialspoint.com/ruby/ruby_predefined_variables.htm")
+  
 %h3 web 框架Padrino (controller)
 %ul
   %li=link_to "padrino get started",url("http://www.padrinorb.com/guides/getting-started"),:target=>"_blank"
@@ -24,7 +33,7 @@
   %li=link_to "active_record_querying",url("http://guides.rubyonrails.org/active_record_querying.html"),:target=>"_blank"
 
 %h3 Views (view)
-%h3 Haml (view 模板语言
+%h3 Haml (view 模板语言)
 %ul
   %li=link_to "HAML info site",url("http://haml.info/"),:target=>"_blank"
   %li=link_to "HAML reference",url("http://haml.info/docs/yardoc/file.REFERENCE.html"),:target=>"_blank"
@@ -33,7 +42,7 @@
 %ul
   %li=link_to "bootstrap chinese",url("http://www.bootcss.com/"),:target=>"_blank"
   %li=link_to "bootstrap  official site",url("http://getbootstrap.com"),:target=>"_blank"
-
+  %li=link_to "icon 的使用",url("http://marcoceppi.github.io/bootstrap-glyphicons/")
 %h3 sass
 %ul
   %li https://github.com/twbs/bootstrap-sass (sass，bootstrap是less)
@@ -83,4 +92,8 @@
 %ul
   %li http://www.bootcss.com/p/responsive-nav.js/ （响应式导航）
 
+%h3 前端开发
+%ul 
+  %li http://www.58img.com/
+  %li http://www.webskys.com/
 

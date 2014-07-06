@@ -11,34 +11,61 @@
     =favicon_tag 'favicon.ico'
     /%link{:href => 'http://fonts.googleapis.com/css?family=Varela', :rel => :stylesheet}
     =stylesheet_link_tag 'bootstrap', 'application'
+    /%link{:href=>"/stylesheets/bootstrap.css",:rel=>"stylesheet",:type=>"text/css"}
+    /%link{:href=>"/stylesheets/application.css",:rel=>"stylesheet",:type=>"text/css"}
     
 
   %body
-    .navbar.navbar-fixed-top
-      .navbar-inner
-        .container
-          =link_to 'Padrino', url(:base, :index), :class => 'navbar-brand', :title => 'Padrino Admin'
-          %ul.nav.navbar-nav.pull-right
-            /%li.navbar-edit-account=link_to tag_icon(:user), url(:users, :edit, :id => current_account.id), :title => pat(:profile), :class => 'navbar-nav-link'
-            %li.navbar-edit-account=link_to tag_icon(:user), Qiankun::Um.url(:users, :edit, :id => 1), :title => pat(:profile), :class => 'navbar-nav-link'
-            %li.navbar-logout
-              =button_to :logout, Qiankun::Um.url(:sessions, :destroy), :method => :delete, :class => 'navbar-nav-form' do
-                =content_tag :button, tag_icon(:off), :type => :submit, :title => pat(:logout), :class => 'navbar-nav-form-link'
+    %nav.navbar.navbar-default{:role=>"navigation"}
+      .container-fluid
+        .navbar-header
+          =link_to "生活乾坤",url("/"),:class=>"navbar-brand"         
+        .collapse.navbar-collapse{:id=>"bs-example-navbar-collapse-1"}
+          %ul.nav.navbar-nav
+            %li
+              =link_to "消息",url("/")
+            %li=link_to "活动",url("/")
+            %li=link_to "物业公司",Qiankun::Org.url(:base,:index)
+            %li.dropdown
+              =link_to tag_icon("angle-down","个人社交网络"),url("/"),"data-toggle"=>"dropdown",:class=>"dropdown-toggle"
+              
+              %ul.dropdown-menu{:role=>"menu"}
+                %li
+                  %a{:href=>"#"} Action
+                %li
+                  %a{:href=>"#"} Another Action
+                %li.divider
+                %li=link_to "Separated link",url("#")
 
-          %ul.nav.navbar-nav.pull-left
-            %li=link_to tag_icon(:home), Qiankun::App.url(:base,:index), :title =>"Home"
-          /
-          /  - project_modules.each do |project_module|
-          /    %li{:class => "navbar-module #{('active' if request.path_info =~ /^#{project_module.path}/)}"}
-          /      =link_to project_module.human_name, url(project_module.path)
+                %li.divider
+                %li=link_to "Separated link",url("#")
+          %ul.nav.navbar-nav.navbar-right
+            %li=link_to "后台管理",Qiankun::Admin.url(:base,:index),:target=>"_blank"
+            %li=link_to "dev_help",Qiankun::App.url(:dev_help,:index),:target=>"_blank"
+            /%li=link_to tag_icon(:user,"编辑用户资料"), Qiankun::Um.url(:users, :edit,:id =>session[:user_id]), :title =>pat(:profile), :class => 'navbar-nav-link'
+            -puts "session[:user_id]=#{session[:user_id]}"
+            -if session[:user_id].nil?
+              %li=link_to "注册",Qiankun::Um.url(:users,:new)            
+              %li=link_to "登录",Qiankun::Um.url(:sessions,:new)
+            -else
+            %li=link_to "欢迎 #{session[:user_name]}！" ,url("#")
+            %li.dropdown
+              =link_to"我的乾坤",url("/#"),{"data-toggle"=>"dropdown"}
+              %ul.dropdown-menu{:role=>"menu"}
+                %li.navbar-edit-account=link_to tag_icon(:user,"用户编辑"), Qiankun::Um.url(:users, :edit, :id =>session[:user_id]), :title => pat(:profile), :class => 'navbar-nav-link'
+                %li=link_to "头像编辑",Qiankun::Um.url(:users,:headeredit,:id=> session[:user_id])                 
+                %li.divider
+                %li
+                  %a{:href=>"#"}Action
 
+    
     .container.main
-      .main-wrapper
-        ={:error => 'danger', :warning => 'warning', :success => 'success', :notice => 'info'}.map { |type, class_name| flash_tag(type, :class => "alert alert-#{class_name} fade in", :bootstrap => true) }.join.html_safe
-        .row=yield
+      /.main-wrapper
+      ={:error => 'danger', :warning => 'warning', :success => 'success', :notice => 'info'}.map { |type, class_name| flash_tag(type, :class => "alert alert-#{class_name} fade in", :bootstrap => true) }.join.html_safe
+      .row=yield
         
-        %p="hello, this layout is  from layout inside app/views/layouts/application.haml"
-        .main-wrapper-push
+      /%p="hello, this layout is  from layout inside app/views/layouts/application.haml"
+      /.main-wrapper-push
 
     %footer
       .footer-wrapper.container

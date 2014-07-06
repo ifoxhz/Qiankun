@@ -19,7 +19,19 @@
         #     set_current_account(Account.authenticate(params[:email], params[:password])
         #
         def set_current_account(account=nil)
-          session[settings.session_id] = account ? account.id : nil
+          
+          if account
+            session[settings.session_id] = account.id
+            session["user_id"]=account.id
+            session["user_name"]=account.name
+            session["user_email"]=account.email
+          else
+            session[settings.session_id] = nil
+            session["user_id"]=nil
+            session["user_name"]=nil
+            session["user_email"]=nil
+          end
+
           @current_account = account
         end
 

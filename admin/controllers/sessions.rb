@@ -8,7 +8,9 @@ Qiankun::Admin.controllers :sessions do
   post :create do
     puts "hi create session"
     if account = Account.authenticate(params[:email], params[:password])
+
       set_current_account(account)
+       session[settings.session_id]
       redirect url(:base, :index)
     elsif Padrino.env == :development && params[:bypass]
       account = Account.first

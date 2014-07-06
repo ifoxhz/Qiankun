@@ -1,5 +1,4 @@
-Qiankun::Admin.controllers :organizes do
-  layout Padrino.root("app","views","application.haml")
+Qiankun::Admin.controllers :organizes do  
   get :index do
     @title = "Organizes"
     @organizes = Organize.all

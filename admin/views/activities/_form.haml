@@ -1,0 +1,43 @@
+- error = @activity.errors.include?(:name)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :name, :class => 'control-label'
+  .controls
+    =f.text_field :name, :class => 'form-control input-large input-with-feedback', :autofocus => true
+    %span.help-inline=error ? f.error_message_on(:name, :class => 'text-error') : pat(:example)
+- error = @activity.errors.include?(:user_id)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :user_id, :class => 'control-label'
+  .controls
+    =f.text_field :user_id, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:user_id, :class => 'text-error') : pat(:example)
+- error = @activity.errors.include?(:description)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :description, :class => 'control-label'
+  .controls
+    ~f.text_area :description, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:description, :class => 'text-error') : pat(:example)
+- error = @activity.errors.include?(:locationx)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :locationx, :class => 'control-label'
+  .controls
+    =f.text_field :locationx, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:locationx, :class => 'text-error') : pat(:example)
+- error = @activity.errors.include?(:locationy)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :locationy, :class => 'control-label'
+  .controls
+    =f.text_field :locationy, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:locationy, :class => 'text-error') : pat(:example)
+- error = @activity.errors.include?(:address)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :address, :class => 'control-label'
+  .controls
+    ~f.text_area :address, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:address, :class => 'text-error') : pat(:example)
+
+.form-actions
+  =f.submit pat(:save), :class => 'btn btn-primary'
+  &nbsp;
+  =f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  &nbsp;
+  =link_to pat(:cancel), url(:activities, :index), :class => 'btn btn-default'

@@ -1,12 +1,19 @@
 module Qiankun
   class Org < Padrino::Application
+    enable :reload
+    #set :css_asset_folder, Padrino.root("public","stylesheets")
+    #set :js_asset_folder, Padrino.root("public","javascripts")
     register Padrino::Mailer
     register Padrino::Helpers
+    #register Padrino::Sprockets
+    #sprockets  :url => 'assets', :root =>Padrino.root("app")
+    set :public_folder, Padrino.root("public")
 
+    #layout Padrino.root("app","views","application.haml")
+    #layout :application
     #enable :sessions
+    #set :layout,Qiankun::App.layout_path("application")
 
-    #  set :css_asset_folder, 'admin'
-    # set :js_asset_folder, 'admin'
     #layout Padrino.root("app","views","application.haml")
     ##
     # Caching support.

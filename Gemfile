@@ -48,4 +48,6 @@ gem 'bootstrap-sass'
 gem 'mini_magick'#,'3.3'#, require: false
 gem 'rdiscount'
 
+gem 'padrino-sprockets', :require => "padrino/sprockets"
+
 ruby "2.0.0"

@@ -39,7 +39,6 @@ ActiveRecord::Base.configurations[:test] = {
   :password  => '123456',
   :host      => 'localhost',
   :port      => 5432
-
 }
 
 # Setup our logger
