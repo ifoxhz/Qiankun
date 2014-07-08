@@ -25,9 +25,9 @@
             %li
               =link_to "消息",url("/")
             %li=link_to "活动",url("/")
-            %li=link_to "物业公司",Qiankun::Org.url(:base,:index)
+            %li=link_to "物业公司（物业）",Qiankun::Org.url(:base,:index)
             %li.dropdown
-              =link_to tag_icon("angle-down","个人社交网络"),url("/"),"data-toggle"=>"dropdown",:class=>"dropdown-toggle"
+              =link_to tag_icon("angle-down","邻里关系(业主)"),url("/"),"data-toggle"=>"dropdown",:class=>"dropdown-toggle"
               
               %ul.dropdown-menu{:role=>"menu"}
                 %li
@@ -65,7 +65,7 @@
       .row=yield
         
       /%p="hello, this layout is  from layout inside app/views/layouts/application.haml"
-      /.main-wrapper-push
+      .main-wrapper-push
 
     %footer
       .footer-wrapper.container
