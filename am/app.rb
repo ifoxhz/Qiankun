@@ -3,8 +3,8 @@ module Qiankun
     register Padrino::Mailer
     register Padrino::Helpers
 
-    enable :sessions
-
+    #enable :sessions
+    set :public_folder, Padrino.root("public")
     ##
     # Caching support.
     #

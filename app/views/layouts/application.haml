@@ -22,10 +22,10 @@
           =link_to "Life-QianKun",Qiankun::App.url(:base,:index),:class=>"navbar-brand"         
         .collapse.navbar-collapse{:id=>"bs-example-navbar-collapse-1"}
           %ul.nav.navbar-nav
-            %li
-              =link_to "消息",url("/")
-            %li=link_to "活动",url("/")
-            %li=link_to "物业公司（物业）",Qiankun::Org.url(:base,:index)
+            %li=link_to "组织",Qiankun::Org.url(:base,:index)
+            %li=link_to "消息",Qiankun::Mm.url(:base,:index)
+            %li=link_to "活动",Qiankun::Am.url(:base,:index)
+            %li=link_to "物业公司（物业）",Qiankun::Wuye.url(:base,:index)
             %li.dropdown
               =link_to tag_icon("angle-down","邻里关系(业主)"),url("/"),"data-toggle"=>"dropdown",:class=>"dropdown-toggle"
               

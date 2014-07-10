@@ -15,6 +15,7 @@ module Qiankun
        #enable :sessions
      #set :session_secret, '4d2272770f468ce54c1b9a41a60bd23ae75a28d75ff1dea57c20b10394fc56da'
     disable :store_location
+    set :public_folder, Padrino.root("public")
   
     access_control.roles_for :any do |role|
     # role.protect '/'
