@@ -54,6 +54,11 @@ Qiankun::App.controllers :dev_help do
     render '/dev_help/product_line'
   end
 
+  get :protype_plan do
+    @title="tips-rubygc"
+    render '/dev_help/protype_plan'
+  end
+
 
 
 end

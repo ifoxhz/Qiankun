@@ -29,8 +29,8 @@
         %th.header= mat(:organize, :id)
         %th.header= mat(:organize, :name)
         %th.header= mat(:organize, :description)
-        %th.header= mat(:organize, :owner)
-        %th.header= mat(:organize, :zuzi_type)
+        %th.header= mat(:organize, :user_id)
+        %th.header= mat(:organize, :org_type)
         %th.header= mat(:organize, :node_id)
         %th.header= mat(:organize, :integer)
         %th.header= mat(:organize, :created_at)
@@ -45,8 +45,8 @@
           %td.list-column=organize.id
           %td.list-column=organize.name
           %td.list-column=organize.description
-          %td.list-column=organize.owner
-          %td.list-column=organize.zuzi_type
+          %td.list-column=organize.user_id
+          %td.list-column=organize.org_type
           %td.list-column=organize.node_id
           %td.list-column=organize.integer
           %td.list-column=time_ago_in_words organize.created_at

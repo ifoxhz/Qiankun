@@ -10,30 +10,13 @@
   .controls
     =f.text_field :description, :class => 'form-control input-large input-with-feedback'
     %span.help-inline=error ? f.error_message_on(:description, :class => 'text-error') : pat(:example)
-- error = @organize.errors.include?(:owner)
+- error = @organize.errors.include?(:org_type)
 %fieldset.control-group{:class => error ? 'has-error' : ''}
-  =f.label :owner, :class => 'control-label'
+  =f.label :org_type, :class => 'control-label'
   .controls
-    =f.text_field :owner, :class => 'form-control input-large input-with-feedback'
-    %span.help-inline=error ? f.error_message_on(:owner, :class => 'text-error') : pat(:example)
-- error = @organize.errors.include?(:zuzi_type)
-%fieldset.control-group{:class => error ? 'has-error' : ''}
-  =f.label :zuzi_type, :class => 'control-label'
-  .controls
-    =f.text_field :zuzi_type, :class => 'form-control input-large input-with-feedback'
-    %span.help-inline=error ? f.error_message_on(:zuzi_type, :class => 'text-error') : pat(:example)
-- error = @organize.errors.include?(:node_id)
-%fieldset.control-group{:class => error ? 'has-error' : ''}
-  =f.label :node_id, :class => 'control-label'
-  .controls
-    =f.text_field :node_id, :class => 'form-control input-large input-with-feedback'
-    %span.help-inline=error ? f.error_message_on(:node_id, :class => 'text-error') : pat(:example)
-- error = @organize.errors.include?(:integer)
-%fieldset.control-group{:class => error ? 'has-error' : ''}
-  =f.label :integer, :class => 'control-label'
-  .controls
-    =f.text_field :integer, :class => 'form-control input-large input-with-feedback'
-    %span.help-inline=error ? f.error_message_on(:integer, :class => 'text-error') : pat(:example)
+    =f.text_field :org_type, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:org_type, :class => 'text-error') : pat(:example)
+
 
 .form-actions
   =f.submit pat(:save), :class => 'btn btn-primary'

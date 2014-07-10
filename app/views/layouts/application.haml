@@ -19,7 +19,7 @@
     %nav.navbar.navbar-default{:role=>"navigation"}
       .container-fluid
         .navbar-header
-          =link_to "Life-QianKun",url("/"),:class=>"navbar-brand"         
+          =link_to "Life-QianKun",Qiankun::App.url(:base,:index),:class=>"navbar-brand"         
         .collapse.navbar-collapse{:id=>"bs-example-navbar-collapse-1"}
           %ul.nav.navbar-nav
             %li
@@ -56,7 +56,7 @@
                   %li=link_to "头像编辑",Qiankun::Um.url(:users,:headeredit,:id=> session[:user_id])                 
                   %li.divider
                   %li
-                    %a{:href=>"#"}Action
+                    =link_to "我的组织",Qiankun::Org.url(:organizes,:my_org)
 
     
     .container.main

@@ -13,7 +13,20 @@ Qiankun::Org.controllers :organizes do
     render 'organizes/new'
   end
 
+ get :my_org, :map=>"/organizes/my_org" do
+
+ if session[:user_id]
+   @my_org=Organize.where(:user_id=>session[:user_id]).first #curent only support on org
+else
+  @my_org=nil
+end
+   render "organizes/my_org"
+ end
+
   post :create do
+
+    params[:organize][:user_id]=session[:user_id]
+    
     @organize = Organize.new(params[:organize])
     if @organize.save
       @title = pat(:create_title, :model => "organize #{@organize.id}")

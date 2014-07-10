@@ -8,7 +8,8 @@ Qiankun::Um.controllers :sessions do
   post :create do
     if account = User.authenticate(params[:email], params[:password])
       set_current_account(account)
-      redirect url(:base, :index)
+     # redirect url(:base, :index)
+       redirect Qiankun::App.url(:base, :index)
     elsif Padrino.env == :development && params[:bypass]
       account = User.first
       set_current_account(account)

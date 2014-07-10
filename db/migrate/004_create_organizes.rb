@@ -3,8 +3,8 @@ class CreateOrganizes < ActiveRecord::Migration
     create_table :organizes do |t|
       t.string :name
       t.string :description
-      t.integer :owner
-      t.string :zuzi_type
+      t.integer :user_id
+      t.string :org_type
       t.string :node_id
       t.string :integer
       t.timestamps

@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(version: 7) do
   create_table "organizes", force: true do |t|
     t.string   "name"
     t.string   "description"
-    t.integer  "owner"
-    t.string   "zuzi_type"
+    t.integer  "user_id"
+    t.string   "org_type"
     t.string   "node_id"
     t.string   "integer"
     t.datetime "created_at"

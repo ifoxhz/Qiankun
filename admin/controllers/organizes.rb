@@ -1,4 +1,4 @@
-Qiankun::Admin.controllers :organizes do  
+Qiankun::Admin.controllers :organizes do
   get :index do
     @title = "Organizes"
     @organizes = Organize.all
