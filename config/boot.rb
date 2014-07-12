@@ -37,6 +37,8 @@ Bundler.require(:default, RACK_ENV)
 #
 
 Padrino.before_load do
+
+#require "activesupport"
 I18n.default_locale = 'zh_cn'
 Dir.glob(File.expand_path("#{PADRINO_ROOT}/um/locale", __FILE__) + '/**/*.yml').each do |file|
   I18n.load_path << file

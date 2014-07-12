@@ -1,0 +1,49 @@
+- error = @area.errors.include?(:name)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :name, :class => 'control-label'
+  .controls
+    =f.text_field :name, :class => 'form-control input-large input-with-feedback', :autofocus => true
+    %span.help-inline=error ? f.error_message_on(:name, :class => 'text-error') : pat(:example)
+- error = @area.errors.include?(:lx)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :lx, :class => 'control-label'
+  .controls
+    =f.text_field :lx, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:lx, :class => 'text-error') : pat(:example)
+- error = @area.errors.include?(:ly)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :ly, :class => 'control-label'
+  .controls
+    =f.text_field :ly, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:ly, :class => 'text-error') : pat(:example)
+- error = @area.errors.include?(:address)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :address, :class => 'control-label'
+  .controls
+    =f.text_field :address, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:address, :class => 'text-error') : pat(:example)
+- error = @area.errors.include?(:number)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :number, :class => 'control-label'
+  .controls
+    =f.text_field :number, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:number, :class => 'text-error') : pat(:example)
+- error = @area.errors.include?(:organize_id)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :organize_id, :class => 'control-label'
+  .controls
+    =f.text_field :organize_id, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:organize_id, :class => 'text-error') : pat(:example)
+- error = @area.errors.include?(:user_id)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :user_id, :class => 'control-label'
+  .controls
+    =f.text_field :user_id, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:user_id, :class => 'text-error') : pat(:example)
+
+.form-actions
+  =f.submit pat(:save), :class => 'btn btn-primary'
+  &nbsp;
+  =f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  &nbsp;
+  =link_to pat(:cancel), url(:areas, :index), :class => 'btn btn-default'

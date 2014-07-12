@@ -1,0 +1,66 @@
+%ul.nav.nav-tabs
+  %li.active=link_to tag_icon(:list, pat(:list)), url(:areas, :index)
+  %li=link_to tag_icon(:plus, pat(:new)), url(:areas, :new)
+
+.tabs-content
+  %table#list.table.table-striped.table-hover.table-condensed
+    %thead
+      %tr
+        %th.header.list-menu
+          .dropdown
+            %a.list-menu-toggle.dropdown-toggle{:href => '#', :'data-toggle' => :dropdown}
+              =tag_icon :magic
+              %span.caret
+            %ul.list-menu.dropdown-menu{:role => :menu}
+              %li.list-menu-wrapper=link_to tag_icon(:check, pat(:select_all)), '#', :id => 'select-all', :class => 'list-menu-link'
+              %li.list-menu-wrapper.list-menu-wrapper-disabled
+                =link_to tag_icon(:'check-empty', pat(:deselect_all)), '#', :id => 'deselect-all', :class => 'list-menu-link list-menu-link-disabled'
+              %li.list-menu-divider.divider
+              %li.list-menu-wrapper.list-menu-wrapper-disabled
+                =link_to tag_icon(:trash, pat(:delete_selected)), '#', :id => 'delete-selected', :class => 'list-menu-link list-menu-link-disabled'
+                .list-menu-popover-delete-selected.popover.right
+                  .arrow
+                  %h3.popover-title=pat(:delete_selected_title)
+                  .popover-content
+                    = form_tag url(:areas, :destroy_many), :method => :delete do
+                      =hidden_field_tag :area_ids, :'data-delete-many-ids' => true
+                      =submit_tag pat(:delete), :class =>'list-menu-popover-delete-selected-btn btn btn-danger btn-small'
+                      .btn.btn-default.btn-small.cancel=pat(:cancel)
+        %th.header= mat(:area, :id)
+        %th.header= mat(:area, :name)
+        %th.header= mat(:area, :lx)
+        %th.header= mat(:area, :ly)
+        %th.header= mat(:area, :address)
+        %th.header= mat(:area, :number)
+        %th.header= mat(:area, :organize_id)
+        %th.header= mat(:area, :user_id)
+        %th.header= mat(:area, :created_at)
+        %th.header= mat(:area, :updated_at)
+        %th.header.list-row-action-header
+
+    %tbody
+      -@areas.each do |area|
+        %tr.list-row
+          %td.list-column.list-selectable
+            =check_box_tag 'area_ids[]', :value => area.id, :class => 'list-selectable-checkbox'
+          %td.list-column=area.id
+          %td.list-column=area.name
+          %td.list-column=area.lx
+          %td.list-column=area.ly
+          %td.list-column=area.address
+          %td.list-column=area.number
+          %td.list-column=area.organize_id
+          %td.list-column=area.user_id
+          %td.list-column=time_ago_in_words area.created_at
+          %td.list-column=time_ago_in_words area.updated_at
+          %td.list-column.list-row-action
+            .list-row-action-wrapper
+              =link_to tag_icon(:edit), :href => url(:areas, :edit, :id => area.id), :rel => :tooltip, :title => "#{pat(:edit)} area", :class => 'list-row-action-wrapper-link'
+              =link_to tag_icon(:trash), :rel => :tooltip, :title => "#{pat(:delete)} area", :class => 'list-row-action-delete-one list-row-action-wrapper-link'
+              .popover.list-row-action-popover-delete-one.left
+                .arrow
+                %h3.popover-title=pat(:delete, :model => "area")
+                .popover-content
+                  = form_tag url(:areas, :destroy, :id => area.id), :method => :delete do
+                    =submit_tag pat(:delete), :class =>'list-row-action-popover-delete-one-btn btn btn-danger btn-small'
+                    .btn.btn-default.btn-small.cancel=pat(:cancel)

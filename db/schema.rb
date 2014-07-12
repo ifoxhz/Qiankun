@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 7) do
+ActiveRecord::Schema.define(version: 10) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,9 +37,33 @@ ActiveRecord::Schema.define(version: 7) do
     t.datetime "updated_at"
   end
 
+  create_table "areas", force: true do |t|
+    t.string   "name"
+    t.float    "lx"
+    t.float    "ly"
+    t.string   "address"
+    t.string   "number"
+    t.integer  "organize_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "buildings", force: true do |t|
+    t.string   "number"
+    t.integer  "unitnum"
+    t.string   "numperunit"
+    t.integer  "floornum"
+    t.string   "first_num"
+    t.string   "elevator"
+    t.integer  "area_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "messages", force: true do |t|
     t.string   "msgtype"
-    t.string   "msg"
+    t.text     "msg"
     t.integer  "user_id"
     t.integer  "node_id"
     t.datetime "created_at"
@@ -51,6 +75,13 @@ ActiveRecord::Schema.define(version: 7) do
     t.integer  "number"
     t.string   "nodetype"
     t.integer  "created_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "org_pools", force: true do |t|
+    t.integer  "organize_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

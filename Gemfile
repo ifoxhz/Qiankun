@@ -32,6 +32,7 @@ gem 'padrino', '0.12.2'
 gem 'padrino-admin'
 gem 'bootstrap-sass'
 
+
 # Or Padrino Edge
 # gem 'padrino', :github => 'padrino/padrino-framework'
 
@@ -49,5 +50,5 @@ gem 'mini_magick'#,'3.3'#, require: false
 gem 'rdiscount'
 
 gem 'padrino-sprockets', :require => "padrino/sprockets"
-
+#gem 'activesupport'
 ruby "2.0.0"

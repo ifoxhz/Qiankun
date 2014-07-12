@@ -43,7 +43,7 @@
             %li=link_to "后台管理",Qiankun::Admin.url(:base,:index),:target=>"_blank"
             %li=link_to "dev_help",Qiankun::App.url(:dev_help,:index),:target=>"_blank"
             /%li=link_to tag_icon(:user,"编辑用户资料"), Qiankun::Um.url(:users, :edit,:id =>session[:user_id]), :title =>pat(:profile), :class => 'navbar-nav-link'
-            -puts "session[:user_id]=#{session[:user_id]}"
+            /-puts "session[:user_id]=#{session[:user_id]}"
             -if session[:user_id].nil?
               %li=link_to "注册",Qiankun::Um.url(:users,:new)            
               %li=link_to "登录",Qiankun::Um.url(:sessions,:new)
