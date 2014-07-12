@@ -5,7 +5,7 @@ class CreateRoomOwners < ActiveRecord::Migration
       t.string :sex
       t.integer :room_id
       t.integer :family_num
-      t.string :id
+      t.string :id_num
       t.string :workplace
       t.string :title
       t.string :mphone

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 10) do
+ActiveRecord::Schema.define(version: 16) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,86 @@ ActiveRecord::Schema.define(version: 10) do
     t.string   "org_type"
     t.string   "node_id"
     t.string   "integer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "room_billings", force: true do |t|
+    t.string   "name"
+    t.string   "start_date"
+    t.string   "end_date"
+    t.string   "receipt_num"
+    t.integer  "month_num"
+    t.integer  "year_num"
+    t.float    "unit_fee"
+    t.float    "total_pay"
+    t.float    "count"
+    t.string   "status"
+    t.string   "receipt_photo"
+    t.string   "admin_person"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "room_cars", force: true do |t|
+    t.string   "cartype"
+    t.string   "brand"
+    t.string   "number"
+    t.string   "color"
+    t.integer  "room_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "room_families", force: true do |t|
+    t.string   "name"
+    t.integer  "room_id"
+    t.string   "relation"
+    t.integer  "age"
+    t.string   "sex"
+    t.string   "workplace"
+    t.string   "title"
+    t.string   "mphone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "room_owners", force: true do |t|
+    t.string   "name"
+    t.string   "sex"
+    t.integer  "room_id"
+    t.integer  "family_num"
+    t.string   "id_num"
+    t.string   "workplace"
+    t.string   "title"
+    t.string   "mphone"
+    t.string   "emergency_phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "room_pets", force: true do |t|
+    t.string   "number"
+    t.string   "pinzhong"
+    t.string   "num"
+    t.integer  "room_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rooms", force: true do |t|
+    t.string   "number"
+    t.integer  "floor"
+    t.integer  "building_id"
+    t.boolean  "saled"
+    t.string   "chan_quan"
+    t.string   "huxing"
+    t.string   "structure"
+    t.float    "square"
+    t.string   "idles_tatus"
+    t.string   "rents_tatus"
+    t.string   "zhuangxiu_status"
+    t.string   "start_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

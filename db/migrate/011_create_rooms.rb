@@ -2,7 +2,7 @@ class CreateRooms < ActiveRecord::Migration
   def self.up
     create_table :rooms do |t|
       t.string :number #房间号 201
-      t.number :floor  #楼层 2楼
+      t.integer :floor  #楼层 2楼
       t.integer :building_id #属于那一栋
       t.boolean :saled#是否已经销售
       t.string :chan_quan#产权如50年，70年

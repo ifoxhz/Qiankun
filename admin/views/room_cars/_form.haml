@@ -1,0 +1,37 @@
+- error = @room_car.errors.include?(:cartype)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :cartype, :class => 'control-label'
+  .controls
+    =f.text_field :cartype, :class => 'form-control input-large input-with-feedback', :autofocus => true
+    %span.help-inline=error ? f.error_message_on(:cartype, :class => 'text-error') : pat(:example)
+- error = @room_car.errors.include?(:brand)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :brand, :class => 'control-label'
+  .controls
+    =f.text_field :brand, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:brand, :class => 'text-error') : pat(:example)
+- error = @room_car.errors.include?(:number)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :number, :class => 'control-label'
+  .controls
+    =f.text_field :number, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:number, :class => 'text-error') : pat(:example)
+- error = @room_car.errors.include?(:color)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :color, :class => 'control-label'
+  .controls
+    =f.text_field :color, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:color, :class => 'text-error') : pat(:example)
+- error = @room_car.errors.include?(:room_id)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :room_id, :class => 'control-label'
+  .controls
+    =f.text_field :room_id, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:room_id, :class => 'text-error') : pat(:example)
+
+.form-actions
+  =f.submit pat(:save), :class => 'btn btn-primary'
+  &nbsp;
+  =f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  &nbsp;
+  =link_to pat(:cancel), url(:room_cars, :index), :class => 'btn btn-default'

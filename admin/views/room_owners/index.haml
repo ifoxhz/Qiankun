@@ -1,0 +1,70 @@
+%ul.nav.nav-tabs
+  %li.active=link_to tag_icon(:list, pat(:list)), url(:room_owners, :index)
+  %li=link_to tag_icon(:plus, pat(:new)), url(:room_owners, :new)
+
+.tabs-content
+  %table#list.table.table-striped.table-hover.table-condensed
+    %thead
+      %tr
+        %th.header.list-menu
+          .dropdown
+            %a.list-menu-toggle.dropdown-toggle{:href => '#', :'data-toggle' => :dropdown}
+              =tag_icon :magic
+              %span.caret
+            %ul.list-menu.dropdown-menu{:role => :menu}
+              %li.list-menu-wrapper=link_to tag_icon(:check, pat(:select_all)), '#', :id => 'select-all', :class => 'list-menu-link'
+              %li.list-menu-wrapper.list-menu-wrapper-disabled
+                =link_to tag_icon(:'check-empty', pat(:deselect_all)), '#', :id => 'deselect-all', :class => 'list-menu-link list-menu-link-disabled'
+              %li.list-menu-divider.divider
+              %li.list-menu-wrapper.list-menu-wrapper-disabled
+                =link_to tag_icon(:trash, pat(:delete_selected)), '#', :id => 'delete-selected', :class => 'list-menu-link list-menu-link-disabled'
+                .list-menu-popover-delete-selected.popover.right
+                  .arrow
+                  %h3.popover-title=pat(:delete_selected_title)
+                  .popover-content
+                    = form_tag url(:room_owners, :destroy_many), :method => :delete do
+                      =hidden_field_tag :room_owner_ids, :'data-delete-many-ids' => true
+                      =submit_tag pat(:delete), :class =>'list-menu-popover-delete-selected-btn btn btn-danger btn-small'
+                      .btn.btn-default.btn-small.cancel=pat(:cancel)
+        %th.header= mat(:room_owner, :id)
+        %th.header= mat(:room_owner, :name)
+        %th.header= mat(:room_owner, :sex)
+        %th.header= mat(:room_owner, :room_id)
+        %th.header= mat(:room_owner, :family_num)
+        %th.header= mat(:room_owner, :id_num)
+        %th.header= mat(:room_owner, :workplace)
+        %th.header= mat(:room_owner, :title)
+        %th.header= mat(:room_owner, :mphone)
+        %th.header= mat(:room_owner, :emergency_phone)
+        %th.header= mat(:room_owner, :created_at)
+        %th.header= mat(:room_owner, :updated_at)
+        %th.header.list-row-action-header
+
+    %tbody
+      -@room_owners.each do |room_owner|
+        %tr.list-row
+          %td.list-column.list-selectable
+            =check_box_tag 'room_owner_ids[]', :value => room_owner.id, :class => 'list-selectable-checkbox'
+          %td.list-column=room_owner.id
+          %td.list-column=room_owner.name
+          %td.list-column=room_owner.sex
+          %td.list-column=room_owner.room_id
+          %td.list-column=room_owner.family_num
+          %td.list-column=room_owner.id_num
+          %td.list-column=room_owner.workplace
+          %td.list-column=room_owner.title
+          %td.list-column=room_owner.mphone
+          %td.list-column=room_owner.emergency_phone
+          %td.list-column=time_ago_in_words room_owner.created_at
+          %td.list-column=time_ago_in_words room_owner.updated_at
+          %td.list-column.list-row-action
+            .list-row-action-wrapper
+              =link_to tag_icon(:edit), :href => url(:room_owners, :edit, :id => room_owner.id), :rel => :tooltip, :title => "#{pat(:edit)} room_owner", :class => 'list-row-action-wrapper-link'
+              =link_to tag_icon(:trash), :rel => :tooltip, :title => "#{pat(:delete)} room_owner", :class => 'list-row-action-delete-one list-row-action-wrapper-link'
+              .popover.list-row-action-popover-delete-one.left
+                .arrow
+                %h3.popover-title=pat(:delete, :model => "room_owner")
+                .popover-content
+                  = form_tag url(:room_owners, :destroy, :id => room_owner.id), :method => :delete do
+                    =submit_tag pat(:delete), :class =>'list-row-action-popover-delete-one-btn btn btn-danger btn-small'
+                    .btn.btn-default.btn-small.cancel=pat(:cancel)

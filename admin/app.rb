@@ -38,6 +38,12 @@ module Qiankun
         # puts "end run for any role......"
     end
     access_control.roles_for :admin do |role|
+      role.project_module :room_billings, '/room_billings'
+      role.project_module :room_pets, '/room_pets'
+      role.project_module :room_cars, '/room_cars'
+      role.project_module :room_families, '/room_families'
+      role.project_module :room_owners, '/room_owners'
+      role.project_module :rooms, '/rooms'
       role.project_module :buildings, '/buildings'
       role.project_module :activities, '/activities'
       role.project_module :messages, '/messages'

@@ -1,0 +1,76 @@
+%ul.nav.nav-tabs
+  %li.active=link_to tag_icon(:list, pat(:list)), url(:rooms, :index)
+  %li=link_to tag_icon(:plus, pat(:new)), url(:rooms, :new)
+
+.tabs-content
+  %table#list.table.table-striped.table-hover.table-condensed
+    %thead
+      %tr
+        %th.header.list-menu
+          .dropdown
+            %a.list-menu-toggle.dropdown-toggle{:href => '#', :'data-toggle' => :dropdown}
+              =tag_icon :magic
+              %span.caret
+            %ul.list-menu.dropdown-menu{:role => :menu}
+              %li.list-menu-wrapper=link_to tag_icon(:check, pat(:select_all)), '#', :id => 'select-all', :class => 'list-menu-link'
+              %li.list-menu-wrapper.list-menu-wrapper-disabled
+                =link_to tag_icon(:'check-empty', pat(:deselect_all)), '#', :id => 'deselect-all', :class => 'list-menu-link list-menu-link-disabled'
+              %li.list-menu-divider.divider
+              %li.list-menu-wrapper.list-menu-wrapper-disabled
+                =link_to tag_icon(:trash, pat(:delete_selected)), '#', :id => 'delete-selected', :class => 'list-menu-link list-menu-link-disabled'
+                .list-menu-popover-delete-selected.popover.right
+                  .arrow
+                  %h3.popover-title=pat(:delete_selected_title)
+                  .popover-content
+                    = form_tag url(:rooms, :destroy_many), :method => :delete do
+                      =hidden_field_tag :room_ids, :'data-delete-many-ids' => true
+                      =submit_tag pat(:delete), :class =>'list-menu-popover-delete-selected-btn btn btn-danger btn-small'
+                      .btn.btn-default.btn-small.cancel=pat(:cancel)
+        %th.header= mat(:room, :id)
+        %th.header= mat(:room, :number)
+        %th.header= mat(:room, :floor)
+        %th.header= mat(:room, :building_id)
+        %th.header= mat(:room, :saled)
+        %th.header= mat(:room, :chan_quan)
+        %th.header= mat(:room, :huxing)
+        %th.header= mat(:room, :structure)
+        %th.header= mat(:room, :square)
+        %th.header= mat(:room, :idles_tatus)
+        %th.header= mat(:room, :rents_tatus)
+        %th.header= mat(:room, :zhuangxiu_status)
+        %th.header= mat(:room, :start_date)
+        %th.header= mat(:room, :created_at)
+        %th.header= mat(:room, :updated_at)
+        %th.header.list-row-action-header
+
+    %tbody
+      -@rooms.each do |room|
+        %tr.list-row
+          %td.list-column.list-selectable
+            =check_box_tag 'room_ids[]', :value => room.id, :class => 'list-selectable-checkbox'
+          %td.list-column=room.id
+          %td.list-column=room.number
+          %td.list-column=room.floor
+          %td.list-column=room.building_id
+          %td.list-column= room.saled ? tag_icon(:ok) : tag_icon(:remove)
+          %td.list-column=room.chan_quan
+          %td.list-column=room.huxing
+          %td.list-column=room.structure
+          %td.list-column=room.square
+          %td.list-column=room.idles_tatus
+          %td.list-column=room.rents_tatus
+          %td.list-column=room.zhuangxiu_status
+          %td.list-column=room.start_date
+          %td.list-column=time_ago_in_words room.created_at
+          %td.list-column=time_ago_in_words room.updated_at
+          %td.list-column.list-row-action
+            .list-row-action-wrapper
+              =link_to tag_icon(:edit), :href => url(:rooms, :edit, :id => room.id), :rel => :tooltip, :title => "#{pat(:edit)} room", :class => 'list-row-action-wrapper-link'
+              =link_to tag_icon(:trash), :rel => :tooltip, :title => "#{pat(:delete)} room", :class => 'list-row-action-delete-one list-row-action-wrapper-link'
+              .popover.list-row-action-popover-delete-one.left
+                .arrow
+                %h3.popover-title=pat(:delete, :model => "room")
+                .popover-content
+                  = form_tag url(:rooms, :destroy, :id => room.id), :method => :delete do
+                    =submit_tag pat(:delete), :class =>'list-row-action-popover-delete-one-btn btn btn-danger btn-small'
+                    .btn.btn-default.btn-small.cancel=pat(:cancel)

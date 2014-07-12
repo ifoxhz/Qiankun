@@ -1,0 +1,55 @@
+- error = @room_family.errors.include?(:name)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :name, :class => 'control-label'
+  .controls
+    =f.text_field :name, :class => 'form-control input-large input-with-feedback', :autofocus => true
+    %span.help-inline=error ? f.error_message_on(:name, :class => 'text-error') : pat(:example)
+- error = @room_family.errors.include?(:room_id)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :room_id, :class => 'control-label'
+  .controls
+    =f.text_field :room_id, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:room_id, :class => 'text-error') : pat(:example)
+- error = @room_family.errors.include?(:relation)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :relation, :class => 'control-label'
+  .controls
+    =f.text_field :relation, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:relation, :class => 'text-error') : pat(:example)
+- error = @room_family.errors.include?(:age)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :age, :class => 'control-label'
+  .controls
+    =f.text_field :age, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:age, :class => 'text-error') : pat(:example)
+- error = @room_family.errors.include?(:sex)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :sex, :class => 'control-label'
+  .controls
+    =f.text_field :sex, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:sex, :class => 'text-error') : pat(:example)
+- error = @room_family.errors.include?(:workplace)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :workplace, :class => 'control-label'
+  .controls
+    =f.text_field :workplace, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:workplace, :class => 'text-error') : pat(:example)
+- error = @room_family.errors.include?(:title)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :title, :class => 'control-label'
+  .controls
+    =f.text_field :title, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:title, :class => 'text-error') : pat(:example)
+- error = @room_family.errors.include?(:mphone)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :mphone, :class => 'control-label'
+  .controls
+    =f.text_field :mphone, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:mphone, :class => 'text-error') : pat(:example)
+
+.form-actions
+  =f.submit pat(:save), :class => 'btn btn-primary'
+  &nbsp;
+  =f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  &nbsp;
+  =link_to pat(:cancel), url(:room_families, :index), :class => 'btn btn-default'

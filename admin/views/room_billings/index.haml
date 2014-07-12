@@ -1,0 +1,76 @@
+%ul.nav.nav-tabs
+  %li.active=link_to tag_icon(:list, pat(:list)), url(:room_billings, :index)
+  %li=link_to tag_icon(:plus, pat(:new)), url(:room_billings, :new)
+
+.tabs-content
+  %table#list.table.table-striped.table-hover.table-condensed
+    %thead
+      %tr
+        %th.header.list-menu
+          .dropdown
+            %a.list-menu-toggle.dropdown-toggle{:href => '#', :'data-toggle' => :dropdown}
+              =tag_icon :magic
+              %span.caret
+            %ul.list-menu.dropdown-menu{:role => :menu}
+              %li.list-menu-wrapper=link_to tag_icon(:check, pat(:select_all)), '#', :id => 'select-all', :class => 'list-menu-link'
+              %li.list-menu-wrapper.list-menu-wrapper-disabled
+                =link_to tag_icon(:'check-empty', pat(:deselect_all)), '#', :id => 'deselect-all', :class => 'list-menu-link list-menu-link-disabled'
+              %li.list-menu-divider.divider
+              %li.list-menu-wrapper.list-menu-wrapper-disabled
+                =link_to tag_icon(:trash, pat(:delete_selected)), '#', :id => 'delete-selected', :class => 'list-menu-link list-menu-link-disabled'
+                .list-menu-popover-delete-selected.popover.right
+                  .arrow
+                  %h3.popover-title=pat(:delete_selected_title)
+                  .popover-content
+                    = form_tag url(:room_billings, :destroy_many), :method => :delete do
+                      =hidden_field_tag :room_billing_ids, :'data-delete-many-ids' => true
+                      =submit_tag pat(:delete), :class =>'list-menu-popover-delete-selected-btn btn btn-danger btn-small'
+                      .btn.btn-default.btn-small.cancel=pat(:cancel)
+        %th.header= mat(:room_billing, :id)
+        %th.header= mat(:room_billing, :name)
+        %th.header= mat(:room_billing, :start_date)
+        %th.header= mat(:room_billing, :end_date)
+        %th.header= mat(:room_billing, :receipt_num)
+        %th.header= mat(:room_billing, :month_num)
+        %th.header= mat(:room_billing, :year_num)
+        %th.header= mat(:room_billing, :unit_fee)
+        %th.header= mat(:room_billing, :total_pay)
+        %th.header= mat(:room_billing, :count)
+        %th.header= mat(:room_billing, :status)
+        %th.header= mat(:room_billing, :receipt_photo)
+        %th.header= mat(:room_billing, :admin_person)
+        %th.header= mat(:room_billing, :created_at)
+        %th.header= mat(:room_billing, :updated_at)
+        %th.header.list-row-action-header
+
+    %tbody
+      -@room_billings.each do |room_billing|
+        %tr.list-row
+          %td.list-column.list-selectable
+            =check_box_tag 'room_billing_ids[]', :value => room_billing.id, :class => 'list-selectable-checkbox'
+          %td.list-column=room_billing.id
+          %td.list-column=room_billing.name
+          %td.list-column=room_billing.start_date
+          %td.list-column=room_billing.end_date
+          %td.list-column=room_billing.receipt_num
+          %td.list-column=room_billing.month_num
+          %td.list-column=room_billing.year_num
+          %td.list-column=room_billing.unit_fee
+          %td.list-column=room_billing.total_pay
+          %td.list-column=room_billing.count
+          %td.list-column=room_billing.status
+          %td.list-column=room_billing.receipt_photo
+          %td.list-column=room_billing.admin_person
+          %td.list-column=time_ago_in_words room_billing.created_at
+          %td.list-column=time_ago_in_words room_billing.updated_at
+          %td.list-column.list-row-action
+            .list-row-action-wrapper
+              =link_to tag_icon(:edit), :href => url(:room_billings, :edit, :id => room_billing.id), :rel => :tooltip, :title => "#{pat(:edit)} room_billing", :class => 'list-row-action-wrapper-link'
+              =link_to tag_icon(:trash), :rel => :tooltip, :title => "#{pat(:delete)} room_billing", :class => 'list-row-action-delete-one list-row-action-wrapper-link'
+              .popover.list-row-action-popover-delete-one.left
+                .arrow
+                %h3.popover-title=pat(:delete, :model => "room_billing")
+                .popover-content
+                  = form_tag url(:room_billings, :destroy, :id => room_billing.id), :method => :delete do
+                    =submit_tag pat(:delete), :class =>'list-row-action-popover-delete-one-btn btn btn-danger btn-small'
+                    .btn.btn-default.btn-small.cancel=pat(:cancel)

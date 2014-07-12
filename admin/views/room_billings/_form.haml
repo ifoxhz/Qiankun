@@ -1,0 +1,79 @@
+- error = @room_billing.errors.include?(:name)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :name, :class => 'control-label'
+  .controls
+    =f.text_field :name, :class => 'form-control input-large input-with-feedback', :autofocus => true
+    %span.help-inline=error ? f.error_message_on(:name, :class => 'text-error') : pat(:example)
+- error = @room_billing.errors.include?(:start_date)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :start_date, :class => 'control-label'
+  .controls
+    =f.text_field :start_date, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:start_date, :class => 'text-error') : pat(:example)
+- error = @room_billing.errors.include?(:end_date)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :end_date, :class => 'control-label'
+  .controls
+    =f.text_field :end_date, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:end_date, :class => 'text-error') : pat(:example)
+- error = @room_billing.errors.include?(:receipt_num)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :receipt_num, :class => 'control-label'
+  .controls
+    =f.text_field :receipt_num, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:receipt_num, :class => 'text-error') : pat(:example)
+- error = @room_billing.errors.include?(:month_num)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :month_num, :class => 'control-label'
+  .controls
+    =f.text_field :month_num, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:month_num, :class => 'text-error') : pat(:example)
+- error = @room_billing.errors.include?(:year_num)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :year_num, :class => 'control-label'
+  .controls
+    =f.text_field :year_num, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:year_num, :class => 'text-error') : pat(:example)
+- error = @room_billing.errors.include?(:unit_fee)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :unit_fee, :class => 'control-label'
+  .controls
+    =f.text_field :unit_fee, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:unit_fee, :class => 'text-error') : pat(:example)
+- error = @room_billing.errors.include?(:total_pay)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :total_pay, :class => 'control-label'
+  .controls
+    =f.text_field :total_pay, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:total_pay, :class => 'text-error') : pat(:example)
+- error = @room_billing.errors.include?(:count)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :count, :class => 'control-label'
+  .controls
+    =f.text_field :count, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:count, :class => 'text-error') : pat(:example)
+- error = @room_billing.errors.include?(:status)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :status, :class => 'control-label'
+  .controls
+    =f.text_field :status, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:status, :class => 'text-error') : pat(:example)
+- error = @room_billing.errors.include?(:receipt_photo)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :receipt_photo, :class => 'control-label'
+  .controls
+    =f.text_field :receipt_photo, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:receipt_photo, :class => 'text-error') : pat(:example)
+- error = @room_billing.errors.include?(:admin_person)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :admin_person, :class => 'control-label'
+  .controls
+    =f.text_field :admin_person, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:admin_person, :class => 'text-error') : pat(:example)
+
+.form-actions
+  =f.submit pat(:save), :class => 'btn btn-primary'
+  &nbsp;
+  =f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  &nbsp;
+  =link_to pat(:cancel), url(:room_billings, :index), :class => 'btn btn-default'

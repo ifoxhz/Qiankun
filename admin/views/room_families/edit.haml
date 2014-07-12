@@ -1,0 +1,8 @@
+%ul.nav.nav-tabs
+  %li=link_to tag_icon(:list, pat(:list)), url(:room_families, :index)
+  %li=link_to tag_icon(:plus, pat(:new)), url(:room_families, :new)
+  %li.active=link_to tag_icon(:edit, pat(:edit)), url(:room_families, :edit, :id => @room_family.id)
+
+.tabs-content
+  = form_for :room_family, url(:room_families, :update, :id => @room_family.id), :method => :put, :class => 'form-horizontal' do |f|
+    =partial 'room_families/form', :locals => { :f => f }

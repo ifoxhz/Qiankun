@@ -1,0 +1,31 @@
+- error = @room_pet.errors.include?(:number)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :number, :class => 'control-label'
+  .controls
+    =f.text_field :number, :class => 'form-control input-large input-with-feedback', :autofocus => true
+    %span.help-inline=error ? f.error_message_on(:number, :class => 'text-error') : pat(:example)
+- error = @room_pet.errors.include?(:pinzhong)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :pinzhong, :class => 'control-label'
+  .controls
+    =f.text_field :pinzhong, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:pinzhong, :class => 'text-error') : pat(:example)
+- error = @room_pet.errors.include?(:num)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :num, :class => 'control-label'
+  .controls
+    =f.text_field :num, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:num, :class => 'text-error') : pat(:example)
+- error = @room_pet.errors.include?(:room_id)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :room_id, :class => 'control-label'
+  .controls
+    =f.text_field :room_id, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:room_id, :class => 'text-error') : pat(:example)
+
+.form-actions
+  =f.submit pat(:save), :class => 'btn btn-primary'
+  &nbsp;
+  =f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  &nbsp;
+  =link_to pat(:cancel), url(:room_pets, :index), :class => 'btn btn-default'

@@ -1,0 +1,79 @@
+- error = @room.errors.include?(:number)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :number, :class => 'control-label'
+  .controls
+    =f.text_field :number, :class => 'form-control input-large input-with-feedback', :autofocus => true
+    %span.help-inline=error ? f.error_message_on(:number, :class => 'text-error') : pat(:example)
+- error = @room.errors.include?(:floor)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :floor, :class => 'control-label'
+  .controls
+    =f.text_field :floor, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:floor, :class => 'text-error') : pat(:example)
+- error = @room.errors.include?(:building_id)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :building_id, :class => 'control-label'
+  .controls
+    =f.text_field :building_id, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:building_id, :class => 'text-error') : pat(:example)
+- error = @room.errors.include?(:saled)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :saled, :class => 'control-label'
+  .controls
+    =f.check_box :saled, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:saled, :class => 'text-error') : pat(:example)
+- error = @room.errors.include?(:chan_quan)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :chan_quan, :class => 'control-label'
+  .controls
+    =f.text_field :chan_quan, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:chan_quan, :class => 'text-error') : pat(:example)
+- error = @room.errors.include?(:huxing)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :huxing, :class => 'control-label'
+  .controls
+    =f.text_field :huxing, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:huxing, :class => 'text-error') : pat(:example)
+- error = @room.errors.include?(:structure)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :structure, :class => 'control-label'
+  .controls
+    =f.text_field :structure, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:structure, :class => 'text-error') : pat(:example)
+- error = @room.errors.include?(:square)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :square, :class => 'control-label'
+  .controls
+    =f.text_field :square, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:square, :class => 'text-error') : pat(:example)
+- error = @room.errors.include?(:idles_tatus)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :idles_tatus, :class => 'control-label'
+  .controls
+    =f.text_field :idles_tatus, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:idles_tatus, :class => 'text-error') : pat(:example)
+- error = @room.errors.include?(:rents_tatus)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :rents_tatus, :class => 'control-label'
+  .controls
+    =f.text_field :rents_tatus, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:rents_tatus, :class => 'text-error') : pat(:example)
+- error = @room.errors.include?(:zhuangxiu_status)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :zhuangxiu_status, :class => 'control-label'
+  .controls
+    =f.text_field :zhuangxiu_status, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:zhuangxiu_status, :class => 'text-error') : pat(:example)
+- error = @room.errors.include?(:start_date)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :start_date, :class => 'control-label'
+  .controls
+    =f.text_field :start_date, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:start_date, :class => 'text-error') : pat(:example)
+
+.form-actions
+  =f.submit pat(:save), :class => 'btn btn-primary'
+  &nbsp;
+  =f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  &nbsp;
+  =link_to pat(:cancel), url(:rooms, :index), :class => 'btn btn-default'
