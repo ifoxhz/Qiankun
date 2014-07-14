@@ -1,5 +1,5 @@
-Qiankun::Wuye.controllers :base do
-   layout Padrino.root("app","views","application.haml")
+Qiankun::Wuye.controllers :login do
+  
   # get :index, :map => '/foo/bar' do
   #   session[:foo] = 'bar'
   #   render 'index'
@@ -19,9 +19,8 @@ Qiankun::Wuye.controllers :base do
   #   'Hello world!'
   # end
   
-  get :index do
-    @areas=Area.where(:user_id=>session[:user_id])
-    render 'base/index'
+  get :login do
+   redirect Qiankun::Um.url(:sessions,:new) 
   end
 
 end

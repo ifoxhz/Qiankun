@@ -4,6 +4,11 @@ Qiankun::Um.controllers :base do
     render "base/index"
   end
 
+#get :login  do 
+#	if session[:user_id].nil?
+#	 redirect Qiankun::Um.url(:sessions, :new)
+#	end
+#end
   get :bootstrap do 
   render "base/boostrap"
   end

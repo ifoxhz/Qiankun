@@ -8,6 +8,7 @@ class CreateAreas < ActiveRecord::Migration
       t.string :number #我们给他们分配一个编号
       t.integer :organize_id #可以和组织id对应，或许可以用于群组关系的建设
       t.integer :user_id#创建者
+      t.string :photo_url #小区照片
       t.timestamps
     end
   end

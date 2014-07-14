@@ -49,6 +49,8 @@ end
 # Add your after (RE)load hooks here
 #
 Padrino.after_load do
+	#set :login_page, Qiankun::Um.url(:sessions,:new)
+#set :admin_model, "User"
 end
 
 Padrino.load!

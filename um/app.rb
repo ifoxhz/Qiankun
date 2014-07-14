@@ -5,11 +5,12 @@ require File.expand_path("../../lib/access_control.rb", __FILE__)
 module Qiankun
   class Um < Padrino::Application
     enable  :reload # enabled in all environments
-    set :admin_model, 'User'
-    set :login_page,  '/sessions/new'
+
     register Padrino::Mailer
     register Padrino::Helpers
     #register Padrino::Admin::Helpers::ViewHelpers
+    set :admin_model, 'User'
+    set :login_page,  '/sessions/new'
     register Jialong::Um::AccessControl #不能用 Qiankun::Um，死活不行，搞了三个小时
     #enable  :sessions
        #enable :sessions
