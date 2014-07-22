@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 16) do
   create_table "buildings", force: true do |t|
     t.string   "number"
     t.integer  "unitnum"
-    t.string   "numperunit"
+    t.integer  "numperunit"
     t.integer  "floornum"
     t.string   "first_num"
     t.string   "elevator"
@@ -173,6 +173,7 @@ ActiveRecord::Schema.define(version: 16) do
     t.string   "rents_tatus"
     t.string   "zhuangxiu_status"
     t.string   "start_date"
+    t.integer  "area_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,3 +1,7 @@
+%ul.breadcrumb.list-inline
+  %li=link_to "home",Qiankun::App.url(:base,:index)
+  %li.active="我的管理区"
+
 %ul.nav.nav-tabs
   %li.active=link_to tag_icon(:list, pat(:list)), url(:areas, :index)
   %li=link_to tag_icon(:plus, pat(:new)), url(:areas, :new)
@@ -28,6 +32,7 @@
                       .btn.btn-default.btn-small.cancel=pat(:cancel)
         %th.header= mat(:area, :id)
         %th.header= mat(:area, :name)
+        %th.header= "管理"
         %th.header= mat(:area, :lx)
         %th.header= mat(:area, :ly)
         %th.header= mat(:area, :address)
@@ -44,7 +49,8 @@
           %td.list-column.list-selectable
             =check_box_tag 'area_ids[]', :value => area.id, :class => 'list-selectable-checkbox'
           %td.list-column=area.id
-          %td.list-column=area.name
+          %td.list-column=link_to area.name,url(:areas,:show,:area_id=>area.id)
+          %td.list-column=link_to "建筑物管理",url(:buildings, :building_list,:area_id=>area.id)
           %td.list-column=area.lx
           %td.list-column=area.ly
           %td.list-column=area.address

@@ -13,6 +13,7 @@ class CreateRooms < ActiveRecord::Migration
       t.string :rents_tatus#是否出租
       t.string :zhuangxiu_status#是否已经装修
       t.string :start_date#入住时间
+      t.integer :area_id
       t.timestamps
     end
   end
