@@ -1,14 +1,23 @@
-%h2.text-center 欢迎来到物业公司！
-%h3 介绍
-%ul
-  %li  我们给物业公司提供一套客户管理系统
-
-%h3  物业用例
+%ul.breadcrumb.list-inline
+  %li=link_to "home",url("/")   
+  %li=link_to "我的管理区", Qiankun::Wuye.url(:areas,:index,:user_id=>session[:user_id])
+  %li.active "plan phase 1"
+  
+%h2.text-center wuye 用例！
 %h4 管理区管理
 %ul
-  %li CRUD管理区
-  %li 批量添加建筑物
-  %li 单独添加建筑物
+  %li 列出我的管理区
+  %li 新增管理区
+
+  %h5 CRUD管理区
+  %h5 批量添加建筑物
+  %ul
+    %li 需要有一个批量添加的表单，后台根据表单批量生成楼栋
+  %h5 单独添加建筑物
+  %ul 
+    %li 建筑物表单中包含管理区信息
+
+  %h5 查看下属全部建筑物
 
 %h4 建筑物管理
 %ul 

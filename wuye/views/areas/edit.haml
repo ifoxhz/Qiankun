@@ -1,3 +1,8 @@
+%ul.breadcrumb.list-inline
+  %li=link_to "home",url("/")   
+  %li=link_to "我的管理区", Qiankun::Wuye.url(:areas,:index,:user_id=>session[:user_id])
+  %li.active="编辑管理区"
+
 %ul.nav.nav-tabs
   %li=link_to tag_icon(:list, pat(:list)), url(:areas, :index)
   %li=link_to tag_icon(:plus, pat(:new)), url(:areas, :new)

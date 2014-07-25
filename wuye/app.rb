@@ -74,8 +74,9 @@ module Qiankun
     # role.protect '/'
       #Logger.info "hi role!"
       #puts "hello roles 4"
-     role.allow   '/login'
+      role.allow   '/login'
       role.protect   '/base'
+      role.protect   '/index'
      # role.allow   '/um/users/new'  #allow to regester
     end
   end

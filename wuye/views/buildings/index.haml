@@ -4,10 +4,10 @@
   %li=link_to "#{@area.name}",url(:areas,:show,:area_id=>@area.id)
   %li.active="建筑物列表"
 
-%ul.nav.nav-tabs
-  %li.active=link_to tag_icon(:list, pat(:list)), url(:buildings, :index)
-  %li=link_to tag_icon(:plus, pat(:new)), url(:buildings, :new)
-
+/%ul.nav.nav-tabs
+/  %li.active=link_to tag_icon(:list, pat(:list)), url(:buildings, :index)
+/  %li=link_to tag_icon(:plus, pat(:new)), url(:buildings, :new)
+%h2.text-center="#{@area.name} 建筑物列表"
 .tabs-content
   %table#list.table.table-striped.table-hover.table-condensed
     %thead
@@ -32,14 +32,15 @@
                       =hidden_field_tag :building_ids, :'data-delete-many-ids' => true
                       =submit_tag pat(:delete), :class =>'list-menu-popover-delete-selected-btn btn btn-danger btn-small'
                       .btn.btn-default.btn-small.cancel=pat(:cancel)
-        %th.header= mat(:building, :id)
-        %th.header= mat(:building, :number)
-        %th.header= mat(:building, :unitnum)
-        %th.header= mat(:building, :numperunit)
-        %th.header= mat(:building, :floornum)
-        %th.header= mat(:building, :first_num)
-        %th.header= mat(:building, :elevator)
-        %th.header= mat(:building, :area_id)
+        /%th.header= mat(:building, :id)
+        /%th.header= mat(:building, :number)
+        %th.header= "楼号"
+        %th.header= "单元号"
+        %th.header= "一梯几户"
+        %th.header= "楼层数量"
+        %th.header= "房间编号"
+        %th.header= "有无电梯"
+        %th.header= "管理区"
         %th.header= mat(:building, :created_at)
         %th.header= mat(:building, :updated_at)
         %th.header.list-row-action-header
@@ -49,14 +50,14 @@
         %tr.list-row
           %td.list-column.list-selectable
             =check_box_tag 'building_ids[]', :value => building.id, :class => 'list-selectable-checkbox'
-          %td.list-column=building.id
+          /%td.list-column=building.id
           %td.list-column=building.number
           %td.list-column=building.unitnum
           %td.list-column=building.numperunit
           %td.list-column=building.floornum
           %td.list-column=building.first_num
           %td.list-column=building.elevator
-          %td.list-column=building.area_id
+          %td.list-column=@area.name
           %td.list-column=time_ago_in_words building.created_at
           %td.list-column=time_ago_in_words building.updated_at
           %td.list-column.list-row-action
@@ -70,3 +71,6 @@
                   = form_tag url(:buildings, :destroy, :id => building.id), :method => :delete do
                     =submit_tag pat(:delete), :class =>'list-row-action-popover-delete-one-btn btn btn-danger btn-small'
                     .btn.btn-default.btn-small.cancel=pat(:cancel)
+%h2 还想增加新的建筑物？
+%ul
+  %li=link_to "增加新的建筑物",url(:buildings,:new_building,:area_id=>@area.id)

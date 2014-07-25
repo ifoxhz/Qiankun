@@ -1,11 +1,6 @@
 
 %h2 临时功能链接
 %ul
-  %li=link_to "我的管理区",url(:areas,:index)
-
-%h3 development tracking
-%ul
-  %li=link_to "wuye_phase1",url(:dev_plan,:phase1)
-
+  %li=link_to "我的管理区",url(:areas,:myareas,:user_id=>session[:user_id])
 
 

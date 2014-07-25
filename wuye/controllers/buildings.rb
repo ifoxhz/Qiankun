@@ -20,7 +20,7 @@ Qiankun::Wuye.controllers :buildings do
   # end
   
 
-    get :building_list,:map=>"buildings/building_list/:area_id" do
+  get :building_list,:map=>"buildings/building_list/:area_id" do
     @title = "Buildings"
     @area=Area.find(params[:area_id])
     @buildings = Building.where(:area_id=>params[:area_id])
@@ -39,30 +39,52 @@ Qiankun::Wuye.controllers :buildings do
     render 'buildings/new'
   end
 
-
-    get :new_building,:map=>"buildings/new/:area_id" do
+  get :pnew_building,:map=>"buildings/pnew/:area_id" do
     @title = pat(:new_title, :model => 'building')
     @building = Building.new
-    @area=Area.find(params[:area_id])
+    render 'buildings/pnew'
+  end
+
+  get :new_building,:map=>"buildings/new/:area_id" do
+    @title = pat(:new_title, :model => 'building')
+    @building = Building.new
+    @area=Area.find(params[:area_id].to_i)
     render 'buildings/new'
   end
 
   post :create do
-    @building = Building.new(params[:building])
+ 
+  unless params[:building][:number].match("~")
+  @building = Building.new(params[:building])
+  #check 编号为唯一    
+   existed_building=Building.where(:area_id=>params[:building][:area_id],:number=>params[:building][:number]).first
+   @area=Area.find(params[:building][:area_id])   
+   if existed_building.nil?
     if @building.save
       @title = pat(:create_title, :model => "building #{@building.id}")
       flash[:success] = pat(:create_success, :model => 'Building')
-      params[:save_and_continue] ? redirect(url(:buildings, :index)) : redirect(url(:buildings, :edit, :id => @building.id))
+      params[:save_and_continue] ? redirect(url(:buildings, :edit, :id => @building.id)) :redirect(url(:buildings, :building_list,:area_id=>@area.id))
     else
       @title = pat(:create_title, :model => 'building')
       flash.now[:error] = pat(:create_error, :model => 'building')
       render 'buildings/new'
     end
+    else
+      #flash.now[:error] = pat(:create_error, :model => 'building')
+      flash.now[:error] = "#{params[:building][:number]}幢已经创建过了，请检查下属建筑"
+      #render 'buildings/new'
+      redirect(url(:buildings, :new_building,:area_id=>@area.id))
+    end
+   else
+
+   end
   end
 
   get :edit, :with => :id do
     @title = pat(:edit_title, :model => "building #{params[:id]}")
+
     @building = Building.find(params[:id])
+    @area=Area.find(@building.area_id)
     if @building
       render 'buildings/edit'
     else

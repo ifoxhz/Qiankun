@@ -9,6 +9,9 @@
 
 %h3 建筑物管理
 %ul
-  %li=link_to "建筑物列表",url(:buildings,:building_list,:area_id=>@area.id)
-  %li=link_to "批量添加建筑物",url(:buildings,:building_list,:area_id=>@area.id)
-
+  
+  -if @total_building==0
+    %li=link_to "批量添加建筑物",url(:buildings,:building_list,:area_id=>@area.id)
+  -else
+    %li=link_to "查看#{@area.name}的建筑物列表",url(:buildings,:building_list,:area_id=>@area.id)
+    %li=link_to "增加新的建筑物",url(:buildings,:new_building,:area_id=>@area.id)

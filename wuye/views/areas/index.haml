@@ -2,9 +2,9 @@
   %li=link_to "home",Qiankun::App.url(:base,:index)
   %li.active="我的管理区"
 
-%ul.nav.nav-tabs
-  %li.active=link_to tag_icon(:list, pat(:list)), url(:areas, :index)
-  %li=link_to tag_icon(:plus, pat(:new)), url(:areas, :new)
+/%ul.nav.nav-tabs
+/  %li.active=link_to tag_icon(:list, pat(:list)), url(:areas, :index)
+/  %li=link_to tag_icon(:plus, pat(:new)), url(:areas, :new)
 
 .tabs-content
   %table#list.table.table-striped.table-hover.table-condensed
@@ -70,3 +70,6 @@
                   = form_tag url(:areas, :destroy, :id => area.id), :method => :delete do
                     =submit_tag pat(:delete), :class =>'list-row-action-popover-delete-one-btn btn btn-danger btn-small'
                     .btn.btn-default.btn-small.cancel=pat(:cancel)
+%h3 新增管理区？
+%ul 
+  %li=link_to "新增管理区" ,url(:areas,:new)
