@@ -42,6 +42,7 @@ Qiankun::Wuye.controllers :buildings do
   get :pnew_building,:map=>"buildings/pnew/:area_id" do
     @title = pat(:new_title, :model => 'building')
     @building = Building.new
+     @area=Area.find(params[:area_id].to_i)
     render 'buildings/pnew'
   end
 
@@ -53,11 +54,10 @@ Qiankun::Wuye.controllers :buildings do
   end
 
   post :create do
- 
-  unless params[:building][:number].match("~")
-  @building = Building.new(params[:building])
+   @building = Building.new(params[:building])
   #check 编号为唯一    
    existed_building=Building.where(:area_id=>params[:building][:area_id],:number=>params[:building][:number]).first
+   
    @area=Area.find(params[:building][:area_id])   
    if existed_building.nil?
     if @building.save
@@ -75,10 +75,35 @@ Qiankun::Wuye.controllers :buildings do
       #render 'buildings/new'
       redirect(url(:buildings, :new_building,:area_id=>@area.id))
     end
-   else
-
-   end
   end
+
+   post :pcreate do
+    building_hash=params[:building]
+    succ_list=[]
+    failed_list=[]
+    @area=Area.find(params[:building][:area_id]) 
+    building_hash[:number].split(",").each do |number|
+     params[:building][:number]=number
+     @building = Building.new(params[:building])
+     existed_building=Building.where(:area_id=>params[:building][:area_id],:number=>params[:building][:number]).first
+     if existed_building.nil?
+      if @building.save
+         succ_list<<number
+      else
+        failed_list<<number
+      end
+    else
+      failed_list<<number
+    end
+   end
+   if failed_list.size==0
+    flash[:success] = pat(:create_success, :model => 'Building')
+      params[:save_and_continue] ? redirect(url(:buildings, :edit, :id => @building.id)) :redirect(url(:buildings, :building_list,:area_id=>@area.id))
+    else
+       flash.now[:error] = "#{failed_list} 这几栋没有创建成功"
+       render 'buildings/new'
+   end
+ end
 
   get :edit, :with => :id do
     @title = pat(:edit_title, :model => "building #{params[:id]}")

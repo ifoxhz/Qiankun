@@ -9,5 +9,5 @@
   %li.active=link_to tag_icon(:plus, pat(:new)), url(:buildings, :new)
 
 .tabs-content
-  = form_for :building, url(:buildings, :create), :class => 'form-horizontal' do |f|
-    =partial 'buildings/form', :locals => { :f => f }
+  = form_for :building, url(:buildings, :pcreate), :class => 'form-horizontal' do |f|
+    =partial 'buildings/pform', :locals => { :f => f }
