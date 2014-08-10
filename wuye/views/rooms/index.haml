@@ -1,8 +1,13 @@
-%ul.nav.nav-tabs
-  %li.active=link_to tag_icon(:list, pat(:list)), url(:rooms, :index)
-  %li=link_to tag_icon(:plus, pat(:new)), url(:rooms, :new)
+%ul.breadcrumb.list-inline
+  %li=link_to "home",url("/")   
+  %li=link_to "我的管理区", Qiankun::Wuye.url(:areas,:index,:user_id=>session[:user_id])
+  %li=link_to  "#{@area.name}",url(:areas,:show,:area_id=>@area.id)
+  %li=link_to  "#{@building.number} 栋",url(:buildings,:show,:area_id=>@area.id,:building_id=>@building.id)
+  %li.active="房间列表"
+
 
 .tabs-content
+-unless @rooms.count==0
   %table#list.table.table-striped.table-hover.table-condensed
     %thead
       %tr
@@ -76,3 +81,7 @@
                   = form_tag url(:rooms, :destroy, :id => room.id), :method => :delete do
                     =submit_tag pat(:delete), :class =>'list-row-action-popover-delete-one-btn btn btn-danger btn-small'
                     .btn.btn-default.btn-small.cancel=pat(:cancel)
+-else
+  %h2 还没有产生房间？现在就产生
+  %h3=link_to "批量生成房间",url(:rooms,:new,:building_id=>@building.id)
+  %h3=link_to "增加一个新的房间",url(:rooms,:new,:building_id=>@building.id)

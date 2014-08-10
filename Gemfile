@@ -49,6 +49,25 @@ gem 'bootstrap-sass'
 gem 'mini_magick'#,'3.3'#, require: false
 gem 'rdiscount'
 
+
 gem 'padrino-sprockets', :require => "padrino/sprockets"
 #gem 'activesupport'
+
+gem 'rest-client', '~> 1.7.2'
+
+#gem "grape"  #, git: "http://github.com/intridea/grape.git", :branch => "frontier"
+#gem 'grape-swagger', git: "https://github.com/tim-vandecasteele/grape-swagger.git"
+
+#if ENV['RACK_ENV']=='development'
+#gem 'ruby_gntp'
+#gem 'pry'
+
+
+  #gem 'ffi'#,:git => "https://github.com/ffi/ffi"
+
+ # gem 'spoon', :git=>"https://github.com/headius/spoon"
+ # gem "guard"
+ # gem "guard-bundler"
+ # gem "guard-rack"
+#end
 ruby "2.0.0"

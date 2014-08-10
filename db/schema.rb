@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 16) do
+ActiveRecord::Schema.define(version: 21) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,6 +97,27 @@ ActiveRecord::Schema.define(version: 16) do
     t.datetime "updated_at"
   end
 
+  create_table "p_user_tags", force: true do |t|
+    t.string   "pu_id"
+    t.string   "pc_id"
+    t.string   "b_key"
+    t.string   "tag"
+    t.integer  "tag_id"
+    t.integer  "push_user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "push_users", force: true do |t|
+    t.string   "pu_id"
+    t.string   "pc_id"
+    t.string   "b_key"
+    t.string   "sv_num"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "room_billings", force: true do |t|
     t.string   "name"
     t.string   "start_date"
@@ -174,6 +195,37 @@ ActiveRecord::Schema.define(version: 16) do
     t.string   "zhuangxiu_status"
     t.string   "start_date"
     t.integer  "area_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tag_msgs", force: true do |t|
+    t.string   "msg"
+    t.string   "pu_id"
+    t.integer  "pc_id"
+    t.string   "b_key"
+    t.string   "succ"
+    t.string   "tag"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tags", force: true do |t|
+    t.string   "p_tag"
+    t.string   "sv_tag"
+    t.string   "b_key"
+    t.integer  "owner_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "uni_msgs", force: true do |t|
+    t.string   "msg"
+    t.string   "pu_id"
+    t.string   "pc_id"
+    t.string   "b_key"
+    t.string   "succ"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

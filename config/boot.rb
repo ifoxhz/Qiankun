@@ -37,6 +37,7 @@ Bundler.require(:default, RACK_ENV)
 #
 
 Padrino.before_load do
+Padrino.dependency_paths << Padrino.root('api/*.rb')
 
 #require "activesupport"
 I18n.default_locale = 'zh_cn'
@@ -49,8 +50,19 @@ end
 # Add your after (RE)load hooks here
 #
 Padrino.after_load do
-	#set :login_page, Qiankun::Um.url(:sessions,:new)
+#set :login_page, Qiankun::Um.url(:sessions,:new)
 #set :admin_model, "User"
 end
+
+
+#[ 'config/initializers' ].each do |path|
+#  Dir[File.expand_path("../../#{path}/**/*.rb", __FILE__)].each do |f|
+#    require f
+#  end
+#end
+
+Padrino::Logger::Config[:test] = { log_level: :debug, stream: :to_file}
+Padrino::Logger::Config[:development] = { log_level: :devel, stream: :stdout}
+Padrino::Logger::Config[:production] = { log_level: :info,  stream: :to_file}
 
 Padrino.load!

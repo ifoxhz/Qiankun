@@ -34,6 +34,8 @@
                       .btn.btn-default.btn-small.cancel=pat(:cancel)
         /%th.header= mat(:building, :id)
         /%th.header= mat(:building, :number)
+        %th.header= "查看"
+        %th.header= "房间列表"
         %th.header= "楼号"
         %th.header= "单元号"
         %th.header= "一梯几户"
@@ -51,7 +53,9 @@
           %td.list-column.list-selectable
             =check_box_tag 'building_ids[]', :value => building.id, :class => 'list-selectable-checkbox'
           /%td.list-column=building.id
-          %td.list-column=building.number
+          %td.list-column=link_to "查看",url(:buildings,:show,:area_id=>@area.id,:building_id=>building.id)
+          %td.list-column=link_to "房间列表",url(:rooms,:room_list,:building_id=>building.id)
+          %td.list-column="#{building.number} 栋"
           %td.list-column=building.unitnum
           %td.list-column=building.numperunit
           %td.list-column=building.floornum

@@ -1,0 +1,16 @@
+%ul.breadcrumb.list-inline
+  %li=link_to "home",url("/")   
+  %li=link_to "我的管理区", Qiankun::Wuye.url(:areas,:index,:user_id=>session[:user_id])
+  %li=link_to  "#{@area.name}",url(:areas,:show,:area_id=>@area.id)
+  %li.active="#{@building.number} 栋"
+
+
+%h3 基本信息
+%ul
+  %li= "楼号#{@building.number}"
+  %li= "单元数量#{@building.unitnum}"
+  %li= "一梯几户#{@building.numperunit}"
+  %li= "楼层数量#{@building.floornum}"
+  %li= "房间编号#{@building.first_num}"
+  %li= "有无电梯#{@building.elevator}"
+  %li= "管理区#{@area.id}"

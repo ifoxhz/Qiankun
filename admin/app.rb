@@ -48,7 +48,6 @@ module Qiankun
       role.project_module :buildings, '/buildings'
       role.project_module :activities, '/activities'
       role.project_module :messages, '/messages'
-      role.project_module :nodes, '/nodes'
       
       role.project_module :organizes, '/organizes'
       role.project_module :users, '/users'

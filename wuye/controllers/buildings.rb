@@ -105,6 +105,15 @@ Qiankun::Wuye.controllers :buildings do
    end
  end
 
+
+ get :show,:map=>"buildings/show/:area_id/:building_id" do
+ @area=Area.find(params[:area_id])
+ @building=Building.find(params[:building_id])
+ #@total_building=Building.where(:area_id=>params[:area_id]).count
+ render 'buildings/show'
+end
+
+
   get :edit, :with => :id do
     @title = pat(:edit_title, :model => "building #{params[:id]}")
 

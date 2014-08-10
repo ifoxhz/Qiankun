@@ -51,4 +51,8 @@ Padrino.mount('Qiankun::Mm', :app_file => Padrino.root('mm/app.rb')).to('/mm')
 Padrino.mount('Qiankun::Am', :app_file => Padrino.root('am/app.rb')).to('/am')
 
 Padrino.mount('Qiankun::Wuye', :app_file => Padrino.root('wuye/app.rb')).to('/wuye')
+
+Padrino.mount('Qiankun::Api', :app_file => Padrino.root('api/app.rb')).to('/api')
+
 Padrino.mount('Qiankun::App', :app_file => Padrino.root('app/app.rb')).to('/')
+

@@ -26,6 +26,7 @@ GEM
       mime-types (>= 1.16)
     daemons (1.1.9)
     eventmachine (1.0.3-x86-mingw32)
+    ffi (1.9.3-x86-mingw32)
     haml (4.0.5)
       tilt
     hike (1.2.3)
@@ -46,6 +47,7 @@ GEM
       metaclass (~> 0.0.1)
     moneta (0.7.20)
     multi_json (1.10.1)
+    netrc (0.7.7)
     padrino (0.12.2)
       padrino-admin (= 0.12.2)
       padrino-cache (= 0.12.2)
@@ -91,6 +93,10 @@ GEM
       rack (>= 1.0)
     rake (10.3.2)
     rdiscount (2.1.7.1)
+    rest-client (1.7.2-x86-mingw32)
+      ffi (~> 1.9)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
     riot (0.12.7)
       rr
     rr (1.1.2)
@@ -138,6 +144,7 @@ DEPENDENCIES
   rack-test
   rake
   rdiscount
+  rest-client (~> 1.7.2)
   riot
   sass
   thin
