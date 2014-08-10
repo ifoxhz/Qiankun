@@ -3,7 +3,7 @@ class CreatePushUsers < ActiveRecord::Migration
     create_table :push_users do |t|
       t.string :pu_id
       t.string :pc_id
-      t.string :b_key
+      t.string :apikey
       t.string :sv_num
       t.integer :user_id
       t.timestamps

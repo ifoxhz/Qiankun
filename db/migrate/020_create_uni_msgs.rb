@@ -4,7 +4,7 @@ class CreateUniMsgs < ActiveRecord::Migration
       t.string :msg
       t.string :pu_id
       t.string :pc_id
-      t.string :b_key
+      t.string :apikey
       t.string :succ
       t.timestamps
     end

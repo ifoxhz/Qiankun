@@ -4,7 +4,7 @@ class CreateTagMsgs < ActiveRecord::Migration
       t.string :msg
       t.string :pu_id
       t.integer :pc_id
-      t.string :b_key
+      t.string :apikey
       t.string :succ
       t.string :tag
       t.timestamps

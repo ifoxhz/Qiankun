@@ -48,6 +48,7 @@ gem 'bootstrap-sass'
 #gem 'mini_magick', '~> 3.5.0' #不使用rmagick，占内存
 gem 'mini_magick'#,'3.3'#, require: false
 gem 'rdiscount'
+gem 'json'
 
 
 gem 'padrino-sprockets', :require => "padrino/sprockets"

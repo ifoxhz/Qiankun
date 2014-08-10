@@ -2,6 +2,7 @@ module Qiankun
   class Api < Padrino::Application
     register Padrino::Mailer
     register Padrino::Helpers
+    #register Sinatra::MultiRoute
 
     enable :sessions
 

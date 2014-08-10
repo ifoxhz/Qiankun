@@ -1,9 +1,9 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../test_config.rb')
 
-describe "Qiankun::App::Apiv1Helper" do
+describe "Qiankun::Api::Apiv1Helper" do
   setup do
     helpers = Class.new
-    helpers.extend Qiankun::App::Apiv1Helper
+    helpers.extend Qiankun::Api::Apiv1Helper
     [helpers.foo]
   end
 

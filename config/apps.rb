@@ -41,6 +41,7 @@ end
 # Mounts the core application for this project
 
 Padrino.mount("Qiankun::Admin", :app_file => Padrino.root('admin/app.rb')).to("/admin")
+
 Padrino.mount('Qiankun::Um', :app_file => Padrino.root('um/app.rb')).to('/um')
 
 

@@ -135,6 +135,7 @@ DEPENDENCIES
   bootstrap-sass
   carrierwave (= 0.10.0)
   haml
+  json
   mini_magick
   mocha
   padrino (= 0.12.2)
