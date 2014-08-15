@@ -13,6 +13,8 @@ end
 
 if $0==__FILE__
 
+		#host="121.40.139.187:3000"
+
 	host="localhost:3000"
 	api_key="GTlsskbUF3zs5WH9rR6EffS4"
 

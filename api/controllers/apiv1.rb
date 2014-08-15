@@ -43,12 +43,16 @@ Qiankun::Api.controllers :apiv1 do
 
   get :all_user do   
     all_sv_num=[]
+    user_hash=Hash.new
   PushUser.where("apikey"=>params["apikey"]).each do |push_user|
      all_sv_num<<push_user.sv_num
+     user_hash[push_user.sv_num]=[push_user.pu_id,push_user.pc_id]
   end
  
   content_type :json
-    { :user_list => all_sv_num}.to_json
+   # { :user_list => all_sv_num}.to_json
+
+   user_hash.to_json
   end
 
   get :push_msg do
