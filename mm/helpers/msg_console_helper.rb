@@ -1,10 +1,10 @@
 # Helper methods defined here can be accessed in any controller or view in the application
 
 module Qiankun
-  class Api
-    module Apiv1Helper
-     
-	def get_md5_string(url,http_method,query_hash,secret_key)
+  class Mm
+    module MsgConsoleHelper
+
+     	def get_md5_string(url,http_method,query_hash,secret_key)
 		md5_string=""
 
 		md5_string<<http_method
@@ -16,8 +16,13 @@ module Qiankun
 		md5_string
 	end
 
+	def get_all_user
+		puts "hi"
+	end
+
 
 	def uni_push_msg(apikey,secret_key,user_id,channel_id,msg,push_type)
+
 		baidu_url="http://channel.api.duapp.com/rest/2.0/channel/#{channel_id}"
 		method="push_msg"
 		http_method="POST"
@@ -49,13 +54,9 @@ module Qiankun
 		a=RestClient.post baidu_url,query_hash
 		return a
 	end
+
     end
 
-    helpers Apiv1Helper
+    helpers MsgConsoleHelper
   end
-end
-
-
-if $0==__FILE__
-
 end

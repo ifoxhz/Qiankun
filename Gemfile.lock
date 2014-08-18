@@ -101,6 +101,7 @@ GEM
       rr
     rr (1.1.2)
     sass (3.3.9)
+    settingslogic (2.0.9)
     sinatra (1.4.5)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -148,4 +149,5 @@ DEPENDENCIES
   rest-client (~> 1.7.2)
   riot
   sass
+  settingslogic
   thin

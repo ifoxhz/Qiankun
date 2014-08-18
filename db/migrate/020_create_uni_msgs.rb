@@ -1,3 +1,5 @@
+#保存用户的单播消息
+
 class CreateUniMsgs < ActiveRecord::Migration
   def self.up
     create_table :uni_msgs do |t|

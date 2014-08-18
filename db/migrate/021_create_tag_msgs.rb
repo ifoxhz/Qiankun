@@ -1,3 +1,4 @@
+#保存用户的多播消息
 class CreateTagMsgs < ActiveRecord::Migration
   def self.up
     create_table :tag_msgs do |t|

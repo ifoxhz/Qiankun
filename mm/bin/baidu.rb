@@ -2,6 +2,7 @@ require 'rest_client'
 require 'digest'
 
 
+#u计算baid URL中MD5的函数，按照百度的要求
 def get_md5_string(url,http_method,query_hash,secret_key)
 	md5_string=""
 

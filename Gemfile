@@ -55,6 +55,7 @@ gem 'padrino-sprockets', :require => "padrino/sprockets"
 #gem 'activesupport'
 
 gem 'rest-client', '~> 1.7.2'
+gem 'settingslogic'
 
 #gem "grape"  #, git: "http://github.com/intridea/grape.git", :branch => "frontier"
 #gem 'grape-swagger', git: "https://github.com/tim-vandecasteele/grape-swagger.git"
