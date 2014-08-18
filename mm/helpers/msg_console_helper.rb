@@ -43,7 +43,7 @@ module Qiankun
 	   "timestamp"=>Time.now.to_i,"user_id"=>user_id,\
 	   "channel_id"=>channel_id,"method"=>method,\
 	   "push_type"=>push_type.to_i,"messages"=>message,\
-	    "msg_keys"=>"testkeys","message_type"=>0}
+	    "msg_keys"=>Time.now.to_i.to_s,"message_type"=>0}
      
 		md5_string=get_md5_string(baidu_url,http_method,query_hash,secret_key)
 		md5_sign=Digest::MD5.hexdigest(CGI::escape(md5_string))

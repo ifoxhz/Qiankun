@@ -26,7 +26,7 @@ Qiankun::Mm.controllers :msg_console do
 
 
   get :message_new ,:map=>"/message_new/:pu_id/:pc_id" do
-    @puser=PushUser.where(:pu_id=>params[:pu_id],:pc_id=>params[:pc_id]).first
+    @puser=PushUser.where(:apikey=>Settings.api_key,:pu_id=>params[:pu_id],:pc_id=>params[:pc_id]).first
     render 'msg_console/message_new'
   end
 

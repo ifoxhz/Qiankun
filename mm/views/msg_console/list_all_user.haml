@@ -11,6 +11,7 @@
     %th channle_id
     %th 发送消息
   -@all_user.each do |puser|
+  -next if puser.pu_id.nil?
     %tr
       %td=puser.pu_id
       %td=puser.pc_id
