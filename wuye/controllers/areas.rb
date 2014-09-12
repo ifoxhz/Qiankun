@@ -1,9 +1,23 @@
 Qiankun::Wuye.controllers :areas do
-  get :index do
+layout Padrino.root("app","views","application.haml")
+get :index do
     @title = "Areas"
     @areas = Area.all
     render 'areas/index'
-  end
+end
+
+get :myareas,:map=>"areas/list/:user_id" do
+    @title = "MyAreas"
+    @user=User.find(params[:user_id])
+    @areas = Area.where(:user_id=>params[:user_id])
+    render 'areas/index'
+end
+
+get :show,:map=>"areas/show/:area_id" do
+ @area=Area.find(params[:area_id])
+ @total_building=Building.where(:area_id=>params[:area_id]).count
+ render 'areas/show'
+end
 
   get :new do
     @title = pat(:new_title, :model => 'area')
@@ -12,16 +26,18 @@ Qiankun::Wuye.controllers :areas do
   end
 
   post :create do
+    params[:area][:user_id]=session[:user_id]
     @area = Area.new(params[:area])
+  
     if @area.save
       @title = pat(:create_title, :model => "area #{@area.id}")
       flash[:success] = pat(:create_success, :model => 'Area')
-      params[:save_and_continue] ? redirect(url(:areas, :index)) : redirect(url(:areas, :edit, :id => @area.id))
+      params[:save_and_continue] ?  redirect(url(:areas, :edit, :id => @area.id)) :redirect(url(:areas, :myareas,:user_id=>session[:user_id])) 
     else
       @title = pat(:create_title, :model => 'area')
       flash.now[:error] = pat(:create_error, :model => 'area')
       render 'areas/new'
-    end
+    end    
   end
 
   get :edit, :with => :id do
@@ -85,4 +101,5 @@ Qiankun::Wuye.controllers :areas do
     end
     redirect url(:areas, :index)
   end
+
 end

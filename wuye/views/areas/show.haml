@@ -1,0 +1,17 @@
+%ul.breadcrumb.list-inline
+  %li=link_to "home",Qiankun::App.url(:base,:index)  
+  %li=link_to "我的管理区",url(:areas,:index) 
+  %li.active="#{@area.name}"
+  
+%h3="#{@area.name}"
+%ul.list-group
+  %li.list-group-item="Total Building #{@total_building}"
+
+%h3 建筑物管理
+%ul
+  
+  -if @total_building==0
+    %li=link_to "批量添加建筑物",url(:buildings,:pnew_building,:area_id=>@area.id)
+  -else
+    %li=link_to "查看#{@area.name}的建筑物列表",url(:buildings,:building_list,:area_id=>@area.id)
+    %li=link_to "增加新的建筑物",url(:buildings,:new_building,:area_id=>@area.id)

@@ -20,19 +20,36 @@ if User.count ==0 || User.where(:email=>"hunter.hu@nsn.com").count==0
    account = User.create(:email => "hunter.hu@nsn.com", :name => "Hunter",:password => password, :password_confirmation => password, :role => "admin")
    account = User.create(:email => "zhengyong@gmail.com", :name => "ZhengYong",:password => password, :password_confirmation => password, :role => "admin")
    account = User.create(:email => "eric.xia@nsn.com", :name => "XiaMingMing",:password => password, :password_confirmation => password, :role => "admin")
+
 end
 
-if account.valid?
-  shell.say "================================================================="
-  shell.say "Account has been successfully created, now you can login with:"
-  shell.say "================================================================="
-  shell.say "   email: #{email}"
-  shell.say "   password: #{password}"
-  shell.say "================================================================="
-else
-  shell.say "Sorry but some thing went wrong!"
-  shell.say ""
-  account.errors.full_messages.each { |m| shell.say "   - #{m}" }
+
+#Hunter's seed
+Area.delete_all
+Building.delete_all
+
+hunter=User.where(:email=>"hunter.hu@nsn.com").first
+hunter_area=Area.where(:user_id=>hunter.id).first
+puts "hunter-area=#{hunter_area.nil?}"
+if hunter_area.nil?
+  #build area
+  hunter_area=Area.create(:name=>"世贸之西湖",:address=>"江南大道001号",:user_id=>hunter.id,:number=>"001")
+  #build building
+  1.upto(10).each do |i|
+    Building.create(:area_id=>hunter_area.id,:number=>i,:unitnum=>3,:floornum=>18,:numperunit=>2,:elevator=>true,:first_num=>"01~02")
+  end
+  #build room for each building
+Building.all.each do |building|
+ 1.upto(building.unitnum).each do |i|
+  1.upto(building.floornum).each do |j|
+    building.first_num.split("~").each do |k|
+    room_number="#{building.number}-#{i}-#{j}#{k}"
+    puts "building id =#{building.id}"
+    Room.create(:number=>room_number,:building_id=>building.id,:saled=>true,:chan_quan=>"70",:huxing=>"三室二厅两卫",:square=>123.35,:idles_tatus=>"true",:rents_tatus=>"false",:start_date=>"2012-01-01",:area_id=>hunter_area.id)
+  end
+ end
+end
+end
 end
 
-shell.say ""
+

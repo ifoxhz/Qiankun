@@ -1,5 +1,5 @@
 Qiankun::Mm.controllers :base do
-     layout Padrino.root("app","views","application.haml")
+  layout Padrino.root("app","views","application.haml")
   # get :index, :map => '/foo/bar' do
   #   session[:foo] = 'bar'
   #   render 'index'

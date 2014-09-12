@@ -20,6 +20,7 @@ Qiankun::Wuye.controllers :base do
   # end
   
   get :index do
+    @areas=Area.where(:user_id=>session[:user_id])
     render 'base/index'
   end
 

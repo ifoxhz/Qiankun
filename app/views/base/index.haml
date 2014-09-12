@@ -7,3 +7,8 @@
   %h3=link_to "创建一个物业小区",Qiankun::Org.url(:organizes,:new,:org_type=>"wuye_user")
   %h3=link_to "我的组织",Qiankun::Org.url(:organizes,:my_org)
 
+
+
+%h3 list all baidu user
+%ul
+  %li=link_to "全部用户",Qiankun::Mm.url(:msg_console,:list_all_user)

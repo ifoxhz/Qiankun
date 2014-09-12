@@ -1,0 +1,12 @@
+# config/application.yml
+defaults: &defaults   
+
+development:
+  <<: *defaults
+  api_key: "GTlsskbUF3zs5WH9rR6EffS4"
+  secret_key: "x9p3y2L4kAidrzER5T71Esg2tch6z8Rf"
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

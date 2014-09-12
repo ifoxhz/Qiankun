@@ -1,0 +1,18 @@
+%ul.breadcrumb.list-inline
+  %li=link_to "home",url("/")   
+  %li=link_to "all users console",url(:msg_console,:list_all_user)
+
+
+%h2 Message console
+
+%table.table
+  %tr
+    %th user_id
+    %th channle_id
+    %th 发送消息
+  -@all_user.each do |puser|
+  -next if puser.pu_id.nil?
+    %tr
+      %td=puser.pu_id
+      %td=puser.pc_id
+      %td=link_to "send message" ,url(:msg_console,:message_new,:pu_id=>puser.pu_id,:pc_id=>puser.pc_id)

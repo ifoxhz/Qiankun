@@ -1,0 +1,54 @@
+- error = @building.errors.include?(:number)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label "楼栋编号", :class => 'control-label'
+  .controls
+    =f.text_field :number, :class => 'form-control input-large input-with-feedback', :autofocus => true
+    %span.help-inline=error ? f.error_message_on(:number, :class => 'text-error') : "多栋楼，批量创建，以,间隔 1,2,3,4"
+
+- error = @building.errors.include?(:unitnum)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label "单元数量", :class => 'control-label'
+  .controls
+    =f.text_field :unitnum, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:unitnum, :class => 'text-error') : "一幢楼有几个单元"
+
+- error = @building.errors.include?(:numperunit)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :numperunit, :class => 'control-label'
+  .controls
+    =f.text_field :numperunit, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:numperunit, :class => 'text-error') : "一梯几户"
+
+- error = @building.errors.include?(:floornum)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :floornum, :class => 'control-label'
+  .controls
+    =f.text_field :floornum, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:floornum, :class => 'text-error') : "楼房有几层"
+
+- error = @building.errors.include?(:first_num)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :first_num, :class => 'control-label'
+  .controls
+    =f.text_field :first_num, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:first_num, :class => 'text-error') : "每一层的编号01~02"
+
+- error = @building.errors.include?(:elevator)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :elevator, :class => 'control-label'
+  .controls
+    =f.select :elevator, :options => ["Yes","NO"],:selected =>"Yes",:class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:elevator, :class => 'text-error') : "有电梯选Yes,没有电梯选择No"
+
+- error = @building.errors.include?(:area_id)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  .controls
+    =f.hidden_field :area_id, :value =>@area.id,:class => 'form-control input-large input-with-feedback'
+    /%span.help-inline=error ? f.error_message_on(:area_id, :class => 'text-error') : pat(:example)
+
+.form-actions
+  =f.submit pat(:save), :class => 'btn btn-primary'
+  &nbsp;
+  =f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  &nbsp;
+  =link_to pat(:cancel), url(:buildings, :index), :class => 'btn btn-default'

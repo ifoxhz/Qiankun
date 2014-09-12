@@ -39,6 +39,7 @@
         %th.header= mat(:room, :rents_tatus)
         %th.header= mat(:room, :zhuangxiu_status)
         %th.header= mat(:room, :start_date)
+        %th.header= mat(:room, :area_id)
         %th.header= mat(:room, :created_at)
         %th.header= mat(:room, :updated_at)
         %th.header.list-row-action-header
@@ -61,6 +62,7 @@
           %td.list-column=room.rents_tatus
           %td.list-column=room.zhuangxiu_status
           %td.list-column=room.start_date
+          %td.list-column=room.area_id
           %td.list-column=time_ago_in_words room.created_at
           %td.list-column=time_ago_in_words room.updated_at
           %td.list-column.list-row-action

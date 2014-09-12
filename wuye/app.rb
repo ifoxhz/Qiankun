@@ -1,10 +1,17 @@
 module Qiankun
   class Wuye < Padrino::Application
+    enable  :reload # enabled in all environments
     register Padrino::Mailer
     register Padrino::Helpers
 
     #enable :sessions
     set :public_folder, Padrino.root("public")
+   # set :admin_model, 'User'
+    #set :login_page,  Qiankun::Um.url(:sessions,:new)
+    #set :login_page,Qiankun::Um.url_for(:sessions,:new)
+    register Jialong::Um::AccessControl #不能用 Qiankun::Um，死活不行，搞了三个小时
+   # set :login_page,url(:base,:login)
+    set :login_page,"/login/login"
 
     ##
     # Caching support.
@@ -62,5 +69,15 @@ module Qiankun
     #     render 'errors/505'
     #   end
     #
+
+    access_control.roles_for :any do |role|
+    # role.protect '/'
+      #Logger.info "hi role!"
+      #puts "hello roles 4"
+      role.allow   '/login'
+      role.protect   '/base'
+      role.protect   '/index'
+     # role.allow   '/um/users/new'  #allow to regester
+    end
   end
 end

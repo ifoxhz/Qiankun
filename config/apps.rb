@@ -30,7 +30,9 @@ Padrino.configure_apps do
   set :session_secret, 'a18a87d70514e73081e297f38e1f3802f13f4c898c0c31a79423cbf9bb34ed2b'
   set :protection, :except => :path_traversal
   set :protect_from_csrf, true
-
+  # set :login_page,"/um/sessions/new"
+  #set :login_page, Qiankun::Um.url(:sessions,:new)
+  #set :admin_model, "User"
   #it did not work , not applied to sub app
   #set :css_asset_folder, 'stylesheets'
   #set :js_asset_folder, 'javascripts'
@@ -39,6 +41,7 @@ end
 # Mounts the core application for this project
 
 Padrino.mount("Qiankun::Admin", :app_file => Padrino.root('admin/app.rb')).to("/admin")
+
 Padrino.mount('Qiankun::Um', :app_file => Padrino.root('um/app.rb')).to('/um')
 
 
@@ -49,4 +52,8 @@ Padrino.mount('Qiankun::Mm', :app_file => Padrino.root('mm/app.rb')).to('/mm')
 Padrino.mount('Qiankun::Am', :app_file => Padrino.root('am/app.rb')).to('/am')
 
 Padrino.mount('Qiankun::Wuye', :app_file => Padrino.root('wuye/app.rb')).to('/wuye')
+
+Padrino.mount('Qiankun::Api', :app_file => Padrino.root('api/app.rb')).to('/api')
+
 Padrino.mount('Qiankun::App', :app_file => Padrino.root('app/app.rb')).to('/')
+

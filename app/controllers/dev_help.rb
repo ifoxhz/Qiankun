@@ -59,6 +59,15 @@ Qiankun::App.controllers :dev_help do
     render '/dev_help/protype_plan'
   end
 
+#wuye plan
+    get :wuye_phase1  do
+    render 'dev_help/wuye/phase1'
+  end
+
+  get :wuye_phase2  do
+    render 'dev_help/wuye/phase2'
+  end
+
 
 
 end
